@@ -1,15 +1,15 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeAboutMeActive, changeAboutMeClosed } from "../Redux/homeSlice"
-import msagent from '../assets/icons/msagent.png'
+import { changeSkillsActive, changeSkillsClosed } from "../Redux/homeSlice"
+import helpbook from '../assets/icons/help_book_cool.png'
 
-const AboutMeIcon = () => {
+const SkillsIcon = () => {
     const dispatch = useDispatch()
-    const isAboutMeClosed = useSelector((state) => state.home.isAboutMeClosed)
+    const isSkillsClosed = useSelector((state) => state.home.isSkillsClosed)
 
     const [dragStartPos, setDragStartPos] = useState({x: 0, y:0})
-    
+
     const onStart = (e) => {
         setDragStartPos({x:e.screenX, y:e.screenY})
     }
@@ -19,32 +19,32 @@ const AboutMeIcon = () => {
         if (dragX < 3 || dragY < 3) {
             console.log(`click with drag of ${dragX}, ${dragY}`);
             //onClick function here
-            aboutMeOnClick()
+            SkillsOnClick()
         } else {
             console.log(`click cancelled with drag of ${dragX}, ${dragY}`)
         }
     }
 
-    function aboutMeOnClick() {
+    function SkillsOnClick() {
         console.log("clicked")
-        if (isAboutMeClosed===false){
+        if (isSkillsClosed===false){
             //pass
         } else {
-            dispatch(changeAboutMeActive(true))
-            dispatch(changeAboutMeClosed(false))
+            dispatch(changeSkillsActive(true))
+            dispatch(changeSkillsClosed(false))
         }
     }
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
         <div className="pb-3 justify-center flex">
-            <button id="icon" type="button" title="About Me">
-                <img draggable={false} className="pl-2" alt="about me" src={msagent}/>
-                <div className="text-white">About Me</div> 
+            <button id="icon" type="button" title="Skills">
+                <img draggable={false} className="pl-2" alt="skills" src={helpbook}/>
+                <div className="text-white">Skills</div> 
             </button>
         </div>
     </Draggable>
     )
 }
 
-export default AboutMeIcon
+export default SkillsIcon

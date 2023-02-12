@@ -1,15 +1,15 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeAboutMeActive, changeAboutMeClosed } from "../Redux/homeSlice"
-import msagent from '../assets/icons/msagent.png'
+import { changeContactMeActive, changeContactMeClosed } from "../Redux/homeSlice"
+import modem from '../assets/icons/modem.png'
 
-const AboutMeIcon = () => {
+const ContactMeIcon = () => {
     const dispatch = useDispatch()
-    const isAboutMeClosed = useSelector((state) => state.home.isAboutMeClosed)
+    const isContactMeClosed = useSelector((state) => state.home.isContactMeClosed)
 
     const [dragStartPos, setDragStartPos] = useState({x: 0, y:0})
-    
+
     const onStart = (e) => {
         setDragStartPos({x:e.screenX, y:e.screenY})
     }
@@ -19,32 +19,32 @@ const AboutMeIcon = () => {
         if (dragX < 3 || dragY < 3) {
             console.log(`click with drag of ${dragX}, ${dragY}`);
             //onClick function here
-            aboutMeOnClick()
+            ContactMeOnClick()
         } else {
             console.log(`click cancelled with drag of ${dragX}, ${dragY}`)
         }
     }
 
-    function aboutMeOnClick() {
+    function ContactMeOnClick() {
         console.log("clicked")
-        if (isAboutMeClosed===false){
+        if (isContactMeClosed===false){
             //pass
         } else {
-            dispatch(changeAboutMeActive(true))
-            dispatch(changeAboutMeClosed(false))
+            dispatch(changeContactMeActive(true))
+            dispatch(changeContactMeClosed(false))
         }
     }
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
         <div className="pb-3 justify-center flex">
-            <button id="icon" type="button" title="About Me">
-                <img draggable={false} className="pl-2" alt="about me" src={msagent}/>
-                <div className="text-white">About Me</div> 
+            <button id="icon" type="button" title="Contact Me">
+                <img draggable={false} className="pl-3" alt="contact me" src={modem}/>
+                <div className="text-white">Contact Me</div> 
             </button>
         </div>
     </Draggable>
     )
 }
 
-export default AboutMeIcon
+export default ContactMeIcon
