@@ -10,7 +10,6 @@ import Taskbar from "../Components/Taskbar";
 import AboutMeIcon from "../Components/AboutMeIcon";
 import AboutMeWindow from "../Components/AboutMeWindow";
 
-import MyComponent from "../Components/MyComponent";
 
 
 const Home = () => {
@@ -77,7 +76,6 @@ const Home = () => {
             
             {/* About me */}
             <AboutMeWindow />
-            <MyComponent />
             <Taskbar />
         </div>
     )
