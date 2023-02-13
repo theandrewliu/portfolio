@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeContactMeActive, changeContactMeClosed } from "../Redux/homeSlice"
+import { changeContactMeActive, changeContactMeClosed, changeAboutMeOnTaskbar, changeContactMeOnTaskbar } from "../Redux/homeSlice"
 import modem from '../assets/icons/modem.png'
 
 const ContactMeIcon = () => {
@@ -17,27 +17,26 @@ const ContactMeIcon = () => {
         const dragX = Math.abs(dragStartPos.x - e.screenX)
         const dragY = Math.abs(dragStartPos.y - e.screenY)
         if (dragX < 3 || dragY < 3) {
-            console.log(`click with drag of ${dragX}, ${dragY}`);
             //onClick function here
             ContactMeOnClick()
         } else {
-            console.log(`click cancelled with drag of ${dragX}, ${dragY}`)
+            //pass
         }
     }
 
     function ContactMeOnClick() {
-        console.log("clicked")
         if (isContactMeClosed===false){
             //pass
         } else {
             dispatch(changeContactMeActive(true))
             dispatch(changeContactMeClosed(false))
+            dispatch(changeContactMeOnTaskbar(true))
         }
     }
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex">
+        <div className="pb-3 justify-center flex z-[5]">
             <button id="icon" type="button" title="Contact Me">
                 <img draggable={false} className="pl-3" alt="contact me" src={modem}/>
                 <div className="text-white">Contact Me</div> 

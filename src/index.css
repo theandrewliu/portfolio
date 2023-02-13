@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 @font-face {
     font-family: "W95";
     src: local('W95'), url(../src/assets/fonts/w95fa.woff) format('woff');
 }
 
-@tailwind utilities;
+body {
+    overflow: hidden; /* Hide scrollbars */
+  }

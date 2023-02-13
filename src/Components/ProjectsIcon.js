@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeProjectsActive, changeProjectsClosed } from "../Redux/homeSlice"
+import { changeProjectsActive, changeProjectsClosed, changeProjectsOnTaskbar } from "../Redux/homeSlice"
 import briefcase from '../assets/icons/briefcase.png'
 
 const ProjectsIcon = () => {
@@ -17,27 +17,26 @@ const ProjectsIcon = () => {
         const dragX = Math.abs(dragStartPos.x - e.screenX)
         const dragY = Math.abs(dragStartPos.y - e.screenY)
         if (dragX < 3 || dragY < 3) {
-            console.log(`click with drag of ${dragX}, ${dragY}`);
             //onClick function here
             ProjectsOnClick()
         } else {
-            console.log(`click cancelled with drag of ${dragX}, ${dragY}`)
+            //pass
         }
     }
 
     function ProjectsOnClick() {
-        console.log("clicked")
         if (isProjectsClosed===false){
             //pass
         } else {
             dispatch(changeProjectsActive(true))
             dispatch(changeProjectsClosed(false))
+            dispatch(changeProjectsOnTaskbar(true))
         }
     }
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex">
+        <div className="pb-3 justify-center flex z-[5]">
             <button id="icon" type="button" title="Projects">
                 <img draggable={false} className="pl-2" alt="projects" src={briefcase}/>
                 <div className="text-white">Projects</div> 

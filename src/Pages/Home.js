@@ -1,18 +1,22 @@
 import Taskbar from "../Components/Taskbar";
 import AboutMeIcon from "../Components/AboutMeIcon";
 import AboutMeWindow from "../Components/AboutMeWindow";
-import OniIcon from "../Components/OniIcon";
-import ContactMeIcon from "../Components/ContactMeIcon";
-import ProjectsIcon from "../Components/ProjectsIcon";
 import SkillsIcon from "../Components/SkillsIcon";
+import SkillsWindow from "../Components/SkillsWindow";
+import OniIcon from "../Components/OniIcon";
+import OniWindow from "../Components/OniWindow";
+import ContactMeIcon from "../Components/ContactMeIcon";
+import ContactMeWindow from "../Components/ContactMeWindow";
+import ProjectsIcon from "../Components/ProjectsIcon";
+import ProjectsWindow from "../Components/ProjectsWindow";
 
 
 
 const Home = () => {
     return (
-        <div className="bg-windows-bg h-screen">
+        <div className="bg-windows-bg h-screen overflow-hidden">
             <div className="pt-11 pl-8 scale-75 w-1/12">
-                <div className="flex flex-col">
+                <div className="flex flex-col relative">
                     <AboutMeIcon />
                     <SkillsIcon />
                     <ProjectsIcon />
@@ -20,9 +24,11 @@ const Home = () => {
                     <OniIcon />
                 </div>
             </div>
-            
-            {/* About me */}
-            <AboutMeWindow />
+            <AboutMeWindow/>
+            <SkillsWindow />
+            <ProjectsWindow />
+            <ContactMeWindow />
+            <OniWindow />
             <Taskbar />
         </div>
     )

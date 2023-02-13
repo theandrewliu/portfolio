@@ -1,43 +1,135 @@
 import Draggable from "react-draggable"
 import { Resizable } from "re-resizable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeAboutMeActive, changeAboutMeClosed } from "../Redux/homeSlice";
+import { changeAboutMeActive, changeAboutMeClosed, changeAboutMeMax, changeAboutMeOnTaskbar, changeAllActiveToFalse, incrementGlobalZ } from "../Redux/homeSlice";
+import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar} from "../Redux/homeSlice";
+import { changeContactMeActive, changeContactMeClosed, changeContactMeOnTaskbar } from "../Redux/homeSlice";
+import { changeOniActive, changeOniClosed, changeOniOnTaskbar } from "../Redux/homeSlice";
+import { changeProjectsActive, changeProjectsClosed, changeProjectsOnTaskbar } from "../Redux/homeSlice";
 import closebutton from '../assets/icons/close-icon.png'
 import hidebutton from '../assets/icons/hide-icon.png'
 import maximizebutton from '../assets/icons/maximize-icon.png'
+import minimizebutton from '../assets/icons/minimize-icon.png'
 import msagentsmall from '../assets/icons/msagentsmall.png'
 
 
 const AboutMeWindow = () => {
     const dispatch = useDispatch();
     const isAboutMeClosed = useSelector((state) => state.home.isAboutMeClosed)
+    const isAboutMeActive = useSelector((state) => state.home.isAboutMeActive)
+    const isAboutMeMax = useSelector((state) => state.home.isAboutMeMax)
+    const isContactMeClosed = useSelector((state) =>state.home.isContactMeClosed)
+    const isOniClosed = useSelector((state) => state.home.isOniClosed)
+    const isProjectsClosed = useSelector((state) => state.home.isProjectsClosed)
+    const isSkillsClosed = useSelector((state) => state.home.isSkillsClosed)
+    const zValue = useSelector((state) => state.home.globalZ)
+
+
+    function setActiveWindow() {
+        dispatch(changeAllActiveToFalse())
+        dispatch(changeAboutMeActive(true))
+        dispatch(changeAboutMeOnTaskbar(true))
+    }
 
     function aboutMeCloseOnClick() {
-        console.log("clicked close")
         dispatch(changeAboutMeActive(false))
         dispatch(changeAboutMeClosed(true))
+        dispatch(changeAboutMeOnTaskbar(false))
+        dispatch(changeAboutMeMax(false))
     }
+
+    function aboutMeMaxOnClick() {
+        if (isAboutMeMax === false){
+            if(!isContactMeClosed){
+                contactMeMinimizeOnClick()
+            }
+            if(!isOniClosed){
+                oniMinimizeOnClick()
+            }
+            if(!isProjectsClosed){
+                projectMinimizeOnClick()
+            }
+            if(!isSkillsClosed){
+                skillsMinimizeOnClick()
+            }
+            dispatch(changeAboutMeMax(true))
+        } else {
+            dispatch(changeAboutMeMax(false))
+        }
+    }
+
+    function aboutMeMinimizeOnClick() {
+        dispatch(changeAboutMeActive(false))
+        dispatch(changeAboutMeClosed(true))
+        dispatch(changeAboutMeOnTaskbar(true))
+    }
+
+    // functions to minimize all the other windows
+    function skillsMinimizeOnClick() {
+        dispatch(changeSkillsActive(false))
+        dispatch(changeSkillsClosed(true))
+        dispatch(changeSkillsOnTaskbar(true))
+    }
+
+    function contactMeMinimizeOnClick() {
+        dispatch(changeContactMeActive(false))
+        dispatch(changeContactMeClosed(true))
+        dispatch(changeContactMeOnTaskbar(true))
+    }
+    
+    function oniMinimizeOnClick() {
+        dispatch(changeOniActive(false))
+        dispatch(changeOniClosed(true))
+        dispatch(changeOniOnTaskbar(true))
+    }
+
+    function projectMinimizeOnClick() {
+        dispatch(changeProjectsActive(false))
+        dispatch(changeProjectsClosed(true))
+        dispatch(changeProjectsOnTaskbar(true))
+    }
+
     return (
-        <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -200}}>
-            <Resizable defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isAboutMeClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
-                <div className={!isAboutMeClosed ? "border-4 divide-y-4 border-taskbar flex flex-col h-full" : "hidden"}>
-                    <div id="handle" className="flex justify-between bg-title-bar text-white">
-                        <div className="flex hover:cursor-default pl-1 pt-1 items-center">
-                            <img className="pb-1 pr-1" draggable={false} alt="smallmsagent" src={msagentsmall}/>
-                            About Me
+        <>
+            <div className={isAboutMeMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0 z-6`: "hidden"}>
+                <div className={!isAboutMeClosed ? "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
+                        <div id="handle" className="flex justify-between bg-title-bar text-white">
+                            <div className="flex hover:cursor-default pl-1 pt-1 items-center">
+                                <img className="pb-1 pr-1" draggable={false} alt="smallmsagent" src={msagentsmall}/>
+                                About Me
+                            </div>
+                            <div id="button-group" className="pr-1 pt-1 space-x-1.5">
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={(event)=>{event.stopPropagation();aboutMeMinimizeOnClick()}}><img draggable={false} alt="hidebutton" src={hidebutton}/></button>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={(event)=>{event.stopPropagation();aboutMeMaxOnClick()}}><img draggable={false} alt="minmaxbutton" src={isAboutMeMax ? minimizebutton :maximizebutton}/></button>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={(event)=>{event.stopPropagation();aboutMeCloseOnClick()}}><img draggable={false} alt="closebutton" src={closebutton}/></button>
+                            </div>
                         </div>
-                        <div id="button-group" className="pr-1 pt-1 space-x-1.5">
-                            <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125"><img draggable={false} alt="closebutton" src={hidebutton}/></button>
-                            <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125"><img draggable={false} alt="closebutton" src={maximizebutton}/></button>
-                            <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={()=>aboutMeCloseOnClick()}><img draggable={false} alt="closebutton" src={closebutton}/></button>
+                        <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
-                    <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -200}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable style={isAboutMeClosed ? {zIndex: -100, position: "absolute"} : isAboutMeActive ? {zIndex:zValue, position: "absolute"} : {zIndex: 5, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isAboutMeClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+                    <div className={!isAboutMeClosed ? isAboutMeMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
+                        <div id="handle" className="flex justify-between bg-title-bar text-white">
+                            <div className="flex hover:cursor-default pl-1 pt-1 items-center">
+                                <img className="pb-1 pr-1" draggable={false} alt="smallmsagent" src={msagentsmall}/>
+                                About Me
+                            </div>
+                            <div id="button-group" className="pr-1 pt-1 space-x-1.5">
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={(event)=>{event.stopPropagation();aboutMeMinimizeOnClick()}}><img draggable={false} alt="hidebutton" src={hidebutton}/></button>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={(event)=>{event.stopPropagation();aboutMeMaxOnClick()}}><img draggable={false} alt="minmaxbutton" src={isAboutMeMax ? minimizebutton :maximizebutton}/></button>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow h-3 w-3 scale-125" onClick={(event)=>{event.stopPropagation();aboutMeCloseOnClick()}}><img draggable={false} alt="closebutton" src={closebutton}/></button>
+                            </div>
+                        </div>
+                        <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
                     </div>
-                </div>
-            </Resizable>
-        </Draggable>
+                </Resizable>
+            </Draggable>
+        </>
     )
 }
 

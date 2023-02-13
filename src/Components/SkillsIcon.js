@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeSkillsActive, changeSkillsClosed } from "../Redux/homeSlice"
+import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar } from "../Redux/homeSlice"
 import helpbook from '../assets/icons/help_book_cool.png'
 
 const SkillsIcon = () => {
@@ -32,12 +32,13 @@ const SkillsIcon = () => {
         } else {
             dispatch(changeSkillsActive(true))
             dispatch(changeSkillsClosed(false))
+            dispatch(changeSkillsOnTaskbar(true))
         }
     }
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex">
+        <div className="pb-3 justify-center flex z-[5]">
             <button id="icon" type="button" title="Skills">
                 <img draggable={false} className="pl-2" alt="skills" src={helpbook}/>
                 <div className="text-white">Skills</div> 
