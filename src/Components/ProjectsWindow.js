@@ -1,11 +1,7 @@
 import Draggable from "react-draggable"
 import { Resizable } from "re-resizable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeProjectsActive, changeProjectsClosed, changeProjectsMax, changeProjectsOnTaskbar, changeAllActiveToFalse, incrementGlobalZ } from "../Redux/homeSlice";
-import { changeAboutMeActive, changeAboutMeClosed, changeAboutMeOnTaskbar } from "../Redux/homeSlice";
-import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar} from "../Redux/homeSlice";
-import { changeContactMeActive, changeContactMeClosed, changeContactMeOnTaskbar } from "../Redux/homeSlice";
-import { changeOniActive, changeOniClosed, changeOniOnTaskbar } from "../Redux/homeSlice";
+import { changeProjectsActive, changeProjectsClosed, changeProjectsMax, changeProjectsOnTaskbar, changeAllActiveToFalse, setProjectsZ, incrementGlobalZ } from "../Redux/homeSlice";
 import closebutton from '../assets/icons/close-icon.png'
 import hidebutton from '../assets/icons/hide-icon.png'
 import maximizebutton from '../assets/icons/maximize-icon.png'
@@ -18,16 +14,13 @@ const ProjectsWindow = () => {
     const isProjectsClosed = useSelector((state) => state.home.isProjectsClosed)
     const isProjectsActive = useSelector((state) => state.home.isProjectsActive)
     const isProjectsMax = useSelector((state) => state.home.isProjectsMax)
-    const isAboutMeClosed = useSelector((state) => state.home.isAboutMeClosed)
-    const isContactMeClosed = useSelector((state) =>state.home.isContactMeClosed)
-    const isOniClosed = useSelector((state) => state.home.isOniClosed)
-    const isSkillsClosed = useSelector((state) => state.home.isSkillsClosed)
-    const zValue = useSelector((state) => state.home.globalZ)
+    const zValue = useSelector((state) => state.home.ProjectsZ)
 
     function setActiveWindow() {
         dispatch(changeAllActiveToFalse())
         dispatch(changeProjectsActive(true))
         dispatch(changeProjectsOnTaskbar(true))
+        dispatch(setProjectsZ())
     }
 
     function projectsCloseOnClick() {
@@ -39,22 +32,11 @@ const ProjectsWindow = () => {
 
     function projectsMaxOnClick(){
         if(isProjectsMax === false){
-            if(!isContactMeClosed){
-                contactMeMinimizeOnClick()
-            }
-            if(!isOniClosed){
-                oniMinimizeOnClick()
-            }
-            if(!isAboutMeClosed){
-                aboutMeMinimizeOnClick()
-            }
-            if(!isSkillsClosed){
-                skillsMinimizeOnClick()
-            }
             dispatch(changeProjectsMax(true))
         } else {
             dispatch(changeProjectsMax(false))
         }
+        setActiveWindow()
     }
 
     function projectsMinimizeOnClick() {
@@ -63,34 +45,9 @@ const ProjectsWindow = () => {
         dispatch(changeProjectsOnTaskbar(true))
     }
 
-    // functions to minimize all the other windows
-    function aboutMeMinimizeOnClick() {
-        dispatch(changeAboutMeActive(false))
-        dispatch(changeAboutMeClosed(true))
-        dispatch(changeAboutMeOnTaskbar(true))
-    }
-    function skillsMinimizeOnClick() {
-        dispatch(changeSkillsActive(false))
-        dispatch(changeSkillsClosed(true))
-        dispatch(changeSkillsOnTaskbar(true))
-    }
-
-    function contactMeMinimizeOnClick() {
-        dispatch(changeContactMeActive(false))
-        dispatch(changeContactMeClosed(true))
-        dispatch(changeContactMeOnTaskbar(true))
-    }
-    
-    function oniMinimizeOnClick() {
-        dispatch(changeOniActive(false))
-        dispatch(changeOniClosed(true))
-        dispatch(changeOniOnTaskbar(true))
-    }
-
-
     return (
         <>
-            <div className={isProjectsMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0 z-6`: "hidden"}>
+            <div className={isProjectsMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0 z-6`: "hidden"} style={isProjectsMax ? { zIndex: zValue}:{}}>
                 <div className={!isProjectsClosed ? "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                     <div id="handle" className="flex justify-between bg-title-bar text-white">
                         <div className="flex hover:cursor-default pl-1 pt-1 items-center">

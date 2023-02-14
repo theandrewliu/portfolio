@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeAboutMeActive, changeAboutMeClosed, changeAboutMeOnTaskbar} from "../Redux/homeSlice"
+import { changeAboutMeActive, changeAboutMeClosed, changeAboutMeOnTaskbar, setAboutMeOrder, changeAllActiveToFalse} from "../Redux/homeSlice"
 import msagent from '../assets/icons/msagent.png'
 
 const AboutMeIcon = () => {
@@ -28,9 +28,11 @@ const AboutMeIcon = () => {
         if (isAboutMeClosed===false){
             //pass
         } else {
+            dispatch(changeAllActiveToFalse())
             dispatch(changeAboutMeActive(true))
             dispatch(changeAboutMeClosed(false))
             dispatch(changeAboutMeOnTaskbar(true))
+            dispatch(setAboutMeOrder())
         }
     }
 

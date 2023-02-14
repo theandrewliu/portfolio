@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeContactMeActive, changeContactMeClosed, changeAboutMeOnTaskbar, changeContactMeOnTaskbar } from "../Redux/homeSlice"
+import { changeContactMeActive, changeContactMeClosed, changeContactMeOnTaskbar, setContactMeOrder, changeAllActiveToFalse } from "../Redux/homeSlice"
 import modem from '../assets/icons/modem.png'
 
 const ContactMeIcon = () => {
@@ -28,9 +28,11 @@ const ContactMeIcon = () => {
         if (isContactMeClosed===false){
             //pass
         } else {
+            dispatch(changeAllActiveToFalse())
             dispatch(changeContactMeActive(true))
             dispatch(changeContactMeClosed(false))
             dispatch(changeContactMeOnTaskbar(true))
+            dispatch(setContactMeOrder())
         }
     }
 

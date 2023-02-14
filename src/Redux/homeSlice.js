@@ -7,23 +7,34 @@ export const homeSlice = createSlice({
         isAboutMeClosed: false,
         isAboutMeMax: false,
         AboutMeOnTaskbar: true,
+        AboutMeOrder: 10,
+        AboutMeZ: 10,
         isContactMeActive: false,
         isContactMeClosed: true,
         isContactMeMax: false,
         ContactMeOnTaskbar: false,
+        ContactMeOrder: 10,
+        ContactMeZ: 10,
         isOniActive: false,
         isOniClosed: true,
         isOniMax: false,
         OniOnTaskbar: false,
+        OniOrder: 10,
+        OniZ: 10,
         isProjectsActive: false,
         isProjectsClosed: true,
         isProjectsMax: false,
         ProjectsOnTaskbar: false,
+        ProjectsOrder: 0,
+        ProjectsZ:0,
         isSkillsActive: false,
         isSkillsClosed: true,
         isSkillsMax: false,
         SkillsOnTaskbar: false,
-        globalZ:10, 
+        SkillsOrder:10,
+        SkillsZ:10,
+        globalZ:10,
+        isStartActive: false, 
     },
     reducers: {
         changeAboutMeActive: (state, action) => {
@@ -38,6 +49,13 @@ export const homeSlice = createSlice({
         changeAboutMeOnTaskbar: (state, action) => {
             state.AboutMeOnTaskbar = action.payload
         },
+        setAboutMeOrder:(state)=>{
+            state.AboutMeOrder = state.globalZ
+        },
+        setAboutMeZ:(state)=>{
+            state.AboutMeZ = state.globalZ
+        },
+
         changeContactMeActive: (state, action) => {
             state.isContactMeActive = action.payload
         },
@@ -50,6 +68,13 @@ export const homeSlice = createSlice({
         changeContactMeOnTaskbar: (state, action) => {
             state.ContactMeOnTaskbar = action.payload
         },
+        setContactMeOrder:(state) => {
+            state.ContactMeOrder = state.globalZ
+        },
+        setContactMeZ:(state) => {
+            state.ContactMeZ = state.globalZ
+        },
+
         changeOniActive: (state, action) => {
             state.isOniActive = action.payload
         },
@@ -62,6 +87,13 @@ export const homeSlice = createSlice({
         changeOniOnTaskbar: (state, action) => {
             state.OniOnTaskbar = action.payload
         },
+        setOniOrder: (state) =>{
+            state.OniOrder = state.globalZ
+        },
+        setOniZ: (state) =>{
+            state.OniZ = state.globalZ
+        },
+
         changeProjectsActive: (state, action) => {
             state.isProjectsActive = action.payload
         },
@@ -74,6 +106,13 @@ export const homeSlice = createSlice({
         changeProjectsOnTaskbar: (state, action) => {
             state.ProjectsOnTaskbar = action.payload
         },
+        setProjectsOrder: (state) =>{
+            state.ProjectsOrder = state.globalZ
+        },
+        setProjectsZ:(state) =>{
+            state.ProjectsZ = state.globalZ
+        },
+
         changeSkillsActive: (state, action) => {
             state.isSkillsActive = action.payload
         },
@@ -86,12 +125,20 @@ export const homeSlice = createSlice({
         changeSkillsOnTaskbar: (state, action) => {
             state.SkillsOnTaskbar = action.payload
         },
+        setSkillsOrder:(state) =>{
+            state.SkillsOrder = state.globalZ
+        },
+        setSkillsZ:(state) => {
+            state.SkillsZ = state.globalZ
+        },
+
         changeAllActiveToFalse: (state) => {
             state.isSkillsActive = false
             state.isAboutMeActive = false
             state.isOniActive = false
             state.isProjectsActive = false
             state.isContactMeActive = false
+            state.isStartActive = false
         },
         changeAllToClosed: (state) => {
             state.isAboutMeClosed = true
@@ -102,7 +149,9 @@ export const homeSlice = createSlice({
         },
         incrementGlobalZ: (state) => {
             state.globalZ++
-            console.log(state.globalZ)
+        },
+        changeStartActive:(state, action) => {
+            state.isStartActive = action.payload
         }
     },
 })
@@ -111,26 +160,37 @@ export const {
     changeAboutMeActive, 
     changeAboutMeClosed,
     changeAboutMeMax,
-    changeAboutMeOnTaskbar, 
+    changeAboutMeOnTaskbar,
+    setAboutMeOrder,
+    setAboutMeZ, 
     changeContactMeActive, 
     changeContactMeClosed,
     changeContactMeMax,
     changeContactMeOnTaskbar,
+    setContactMeOrder,
+    setContactMeZ,
     changeOniActive,
     changeOniClosed,
     changeOniMax,
     changeOniOnTaskbar,
+    setOniOrder,
+    setOniZ,
     changeProjectsActive,
     changeProjectsClosed,
     changeProjectsMax,
     changeProjectsOnTaskbar,
+    setProjectsOrder,
+    setProjectsZ,
     changeSkillsActive,
     changeSkillsClosed,
     changeSkillsMax,
     changeSkillsOnTaskbar,
+    setSkillsOrder,
+    setSkillsZ,
     changeAllActiveToFalse,
     changeAllToClosed,
     incrementGlobalZ,
+    changeStartActive,
 } = homeSlice.actions
 
 export default homeSlice.reducer

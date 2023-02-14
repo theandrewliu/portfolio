@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar } from "../Redux/homeSlice"
+import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar, setSkillsOrder, changeAllActiveToFalse } from "../Redux/homeSlice"
 import helpbook from '../assets/icons/help_book_cool.png'
 
 const SkillsIcon = () => {
@@ -17,22 +17,22 @@ const SkillsIcon = () => {
         const dragX = Math.abs(dragStartPos.x - e.screenX)
         const dragY = Math.abs(dragStartPos.y - e.screenY)
         if (dragX < 3 || dragY < 3) {
-            console.log(`click with drag of ${dragX}, ${dragY}`);
             //onClick function here
             SkillsOnClick()
         } else {
-            console.log(`click cancelled with drag of ${dragX}, ${dragY}`)
+            //pass
         }
     }
 
     function SkillsOnClick() {
-        console.log("clicked")
         if (isSkillsClosed===false){
             //pass
         } else {
+            dispatch(changeAllActiveToFalse())
             dispatch(changeSkillsActive(true))
             dispatch(changeSkillsClosed(false))
             dispatch(changeSkillsOnTaskbar(true))
+            dispatch(setSkillsOrder())
         }
     }
 

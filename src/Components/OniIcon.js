@@ -1,13 +1,12 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeOniActive, changeOniClosed, changeOniOnTaskbar } from "../Redux/homeSlice"
+import { changeOniActive, changeOniClosed, changeOniOnTaskbar, setOniOrder, changeAllActiveToFalse } from "../Redux/homeSlice"
 import camera from '../assets/icons/camera.png'
 
 const OniIcon = () => {
     const dispatch = useDispatch()
     const isOniClosed = useSelector((state) => state.home.isOniClosed)
-    const isOniOnTaskbar = useSelector((state) => state.home.OniOnTaskbar)
 
     const [dragStartPos, setDragStartPos] = useState({x: 0, y:0})
 
@@ -29,9 +28,11 @@ const OniIcon = () => {
         if (isOniClosed===false){
             //pass
         } else {
+            dispatch(changeAllActiveToFalse())
             dispatch(changeOniActive(true))
             dispatch(changeOniClosed(false))
             dispatch(changeOniOnTaskbar(true))
+            dispatch(setOniOrder())
         }
     }
 
