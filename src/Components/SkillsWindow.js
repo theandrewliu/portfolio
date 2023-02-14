@@ -69,7 +69,7 @@ const SkillsWindow = () => {
                 </div>
             </div>
             <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 700, y: -300}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable style={isSkillsClosed ? {zIndex: -100, position: "absolute"} : isSkillsActive ? {zIndex:zValue, position: "absolute"}: {zIndex:5, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isSkillsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+                <Resizable style={isSkillsClosed ? {zIndex: -100, position: "absolute"} : isSkillsActive ? {zIndex:zValue, position: "absolute"}: {zIndex:zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isSkillsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isSkillsClosed ? isSkillsMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

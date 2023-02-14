@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeProjectsActive, changeProjectsClosed, changeProjectsOnTaskbar, setProjectsOrder,changeAllActiveToFalse } from "../Redux/homeSlice"
+import { changeProjectsActive, changeProjectsClosed, changeProjectsOnTaskbar, setProjectsOrder, setProjectsZ, changeAllActiveToFalse } from "../Redux/homeSlice"
 import briefcase from '../assets/icons/briefcase.png'
 
 const ProjectsIcon = () => {
@@ -32,6 +32,7 @@ const ProjectsIcon = () => {
             dispatch(changeProjectsActive(true))
             dispatch(changeProjectsClosed(false))
             dispatch(changeProjectsOnTaskbar(true))
+            dispatch(setProjectsZ())
             dispatch(setProjectsOrder())
         }
     }
