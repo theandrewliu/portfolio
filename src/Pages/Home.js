@@ -10,11 +10,13 @@ import ContactMeWindow from "../Components/ContactMeWindow";
 import ProjectsIcon from "../Components/ProjectsIcon";
 import ProjectsWindow from "../Components/ProjectsWindow";
 
+let height = window.innerHeight - 40 //subtracting the height of the taskbar
 
+console.log(height)
 
 const Home = () => {
     return (
-        <div className="bg-windows-bg h-screen overflow-hidden">
+        <div className="bg-windows-bg" style={{height:height}}>
             <div className="pt-11 pl-8 scale-75 w-1/12">
                 <div className="flex flex-col relative">
                     <AboutMeIcon />
