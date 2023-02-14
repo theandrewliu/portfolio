@@ -12,8 +12,6 @@ import ProjectsWindow from "../Components/ProjectsWindow";
 
 let height = window.innerHeight - 40 //subtracting the height of the taskbar
 
-console.log(height)
-
 const Home = () => {
     return (
         <div className="bg-windows-bg" style={{height:height}}>
