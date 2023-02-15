@@ -47,7 +47,7 @@ const ProjectsWindow = () => {
 
     return (
         <>
-            <div className={isProjectsMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0 z-6`: "hidden"} style={isProjectsMax ? { zIndex: zValue}:{}}>
+            <div className={isProjectsMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0`: "hidden"} style={isProjectsMax ? { zIndex: zValue}:{}}>
                 <div className={!isProjectsClosed ? "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                     <div id="handle" className="flex justify-between bg-title-bar text-white">
                         <div className="flex hover:cursor-default pl-1 pt-1 items-center">
@@ -66,7 +66,7 @@ const ProjectsWindow = () => {
                 </div>
             </div>
             <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -200}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable style={isProjectsClosed ? {zIndex: -100, position: "absolute"} : isProjectsActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isProjectsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+                <Resizable bounds="parent" style={isProjectsClosed || isProjectsMax ? {zIndex: -100, position: "absolute"} : isProjectsActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isProjectsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isProjectsClosed ? isProjectsMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

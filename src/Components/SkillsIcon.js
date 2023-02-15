@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar, setSkillsOrder, setSkillsZ, changeAllActiveToFalse } from "../Redux/homeSlice"
+import { changeSkillsActive, changeSkillsClosed, changeSkillsOnTaskbar, setSkillsOrder, setSkillsZ, changeAllActiveToFalse, incrementGlobalZ } from "../Redux/homeSlice"
 import helpbook from '../assets/icons/help_book_cool.png'
 
 const SkillsIcon = () => {
@@ -32,6 +32,7 @@ const SkillsIcon = () => {
             dispatch(changeSkillsActive(true))
             dispatch(changeSkillsClosed(false))
             dispatch(changeSkillsOnTaskbar(true))
+            dispatch(incrementGlobalZ())
             dispatch(setSkillsZ())
             dispatch(setSkillsOrder())
         }

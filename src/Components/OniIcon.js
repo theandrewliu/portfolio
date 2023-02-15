@@ -1,7 +1,7 @@
 import React, {useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector, useDispatch } from "react-redux"
-import { changeOniActive, changeOniClosed, changeOniOnTaskbar, setOniOrder, setOniZ, changeAllActiveToFalse } from "../Redux/homeSlice"
+import { changeOniActive, changeOniClosed, changeOniOnTaskbar, setOniOrder, setOniZ, changeAllActiveToFalse, incrementGlobalZ } from "../Redux/homeSlice"
 import camera from '../assets/icons/camera.png'
 
 const OniIcon = () => {
@@ -32,6 +32,7 @@ const OniIcon = () => {
             dispatch(changeOniActive(true))
             dispatch(changeOniClosed(false))
             dispatch(changeOniOnTaskbar(true))
+            dispatch(incrementGlobalZ())
             dispatch(setOniZ())
             dispatch(setOniOrder())
         }
