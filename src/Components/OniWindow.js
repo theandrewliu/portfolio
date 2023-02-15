@@ -7,6 +7,10 @@ import hidebutton from '../assets/icons/hide-icon.png'
 import maximizebutton from '../assets/icons/maximize-icon.png'
 import minimizebutton from '../assets/icons/minimize-icon.png'
 import camerasmall from '../assets/icons/camera-small.png'
+import Oni1 from '../assets/images/Oni/Oni1.jpg'
+import Oni2 from '../assets/images/Oni/Oni2.jpg'
+import Oni3 from '../assets/images/Oni/Oni3.jpg'
+import Oni4 from '../assets/images/Oni/Oni4.jpg'
 
 
 const OniWindow = () => {
@@ -35,6 +39,7 @@ const OniWindow = () => {
         } else {
             dispatch(changeOniMax(false))
         }
+        incrementGlobalZ()
         setActiveWindow()
     }
 
@@ -60,12 +65,28 @@ const OniWindow = () => {
                         </div>
                     </div>
                     <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                        <p>Pictures of Oni will go here asdfasdfasdfasdfasdfasdfasdf</p>
+                        <div className="flex justify-center items-center">
+                            <h1 className="text-6xl font-bold pt-5">The best dog in my world: Oni</h1>
+                        </div>
+                        <div className="grid grid-cols-2 place-items-center pt-10 gap-y-10 space-x-5 space-y-4">
+                            <div>
+                                <img src={Oni1} alt="a good dog posing for the camera" />
+                            </div>
+                            <div>
+                                <img src={Oni2} alt="a good dog searching where that noise came from"/>
+                            </div>
+                            <div>
+                                <img src={Oni3} alt="a good boy playing with his toy" />
+                            </div>
+                            <div>
+                                <img src={Oni4} alt="a good boy examining his harvest" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 400, y: -100}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isOniClosed || isOniMax ? {zIndex: -100,position: "absolute"} : isOniActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isOniClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 400, y: -550}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isOniClosed || isOniMax ? {zIndex: -100,position: "absolute"} : isOniActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 900, height:600}} minWidth={300} minHeight={200} enable={!isOniClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isOniClosed ? isOniMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">
@@ -79,7 +100,23 @@ const OniWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <p>Pictures of Oni will go here asdfasdfasdfasdfasdfasdfasdf</p>
+                            <div className="flex justify-center items-center">
+                                <h1 className="text-6xl font-bold pt-5">The best dog in my world: Oni</h1>
+                            </div>
+                            <div className="grid grid-cols-2 place-items-center pt-10 gap-y-10 space-x-5 space-y-4">
+                                <div>
+                                    <img src={Oni1} alt="a good dog posing for the camera" />
+                                </div>
+                                <div>
+                                    <img src={Oni2} alt="a good dog searching where that noise came from"/>
+                                </div>
+                                <div>
+                                    <img src={Oni3} alt="a good boy playing with his toy" />
+                                </div>
+                                <div>
+                                    <img src={Oni4} alt="a good boy examining his harvest" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Resizable>
