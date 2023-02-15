@@ -183,7 +183,7 @@ const SkillsWindow = () => {
                     </div>
                 </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -300}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -275}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
                 <Resizable bounds="parent" onResize={(e,dir,ref,delta) => {setDeltaWidthSize(delta.width)}} onResizeStop={()=>{setDivSize({width:divSize.width+deltaWidthSize});setDeltaWidthSize(0)}} style={isSkillsClosed || isSkillsMax ? {zIndex: -100, position: "absolute"} : isSkillsActive ? {zIndex:zValue, position: "absolute"}: {zIndex:zValue-1, position: "absolute"}} defaultSize={{ width: divSize.width, height: divSize.height}} minWidth={300} minHeight={200} enable={!isSkillsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isSkillsClosed ? isSkillsMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">

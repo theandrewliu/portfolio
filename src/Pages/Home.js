@@ -9,6 +9,9 @@ import ContactMeIcon from "../Components/ContactMeIcon";
 import ContactMeWindow from "../Components/ContactMeWindow";
 import ProjectsIcon from "../Components/ProjectsIcon";
 import ProjectsWindow from "../Components/ProjectsWindow";
+//------Fetch
+import FetchIcon from "../Components/Fetch/FetchIcon";
+import FetchWindow from "../Components/Fetch/FetchWindow";
 
 let height = window.innerHeight - 40 //subtracting the height of the taskbar
 
@@ -23,12 +26,17 @@ const Home = () => {
                     <ContactMeIcon />
                     <OniIcon />
                 </div>
+                
+                <FetchIcon />
+                
             </div>
             <AboutMeWindow/>
             <SkillsWindow />
             <ProjectsWindow />
             <ContactMeWindow />
             <OniWindow />
+            {/* -------Fetch Stuff--------- */}
+            <FetchWindow />
             <Taskbar />
         </div>
     )

@@ -19,7 +19,10 @@ import {
     setProjectsZ,
     setSkillsZ,
     incrementGlobalZ,
-    changeStartActive
+    changeStartActive,
+    changeFetchActive,
+    changeFetchClosed,
+    setFetchZ
 } from "../Redux/homeSlice"
 
 
@@ -41,6 +44,10 @@ const Taskbar = () => {
     const isOniOnTaskbar = useSelector((state) => state.home.OniOnTaskbar)
     const OniOrder = useSelector((state) => state.home.OniOrder)
     const isStartActive = useSelector((state) => state.home.isStartActive)
+    //----------Fetch Stuff-----------
+    const isFetchActive = useSelector((state)=> state.home.isFetchActive)
+    const isFetchOnTaskbar = useSelector((state)=> state.home.FetchOnTaskbar)
+    const FetchOrder = useSelector((state)=> state.home.FetchOrder)
 
 
     function AboutMeOnClick() {
@@ -109,12 +116,26 @@ const Taskbar = () => {
     }
 
     function StartOnClick() {
-        dispatch(incrementGlobalZ)
+        dispatch(incrementGlobalZ())
         if(isStartActive === true){
             dispatch(changeStartActive(false))
         } else {
             dispatch(changeAllActiveToFalse())
             dispatch(changeStartActive(true))
+        }
+    }
+
+    //----------Fetch Stuff------------
+    function FetchOnClick(){
+        dispatch(incrementGlobalZ())
+        if(isFetchActive === true) {
+            dispatch(changeFetchActive(false))
+            dispatch(changeFetchClosed(true))
+        } else {
+            dispatch(changeAllActiveToFalse())
+            dispatch(setFetchZ())
+            dispatch(changeFetchActive(true))
+            dispatch(changeFetchClosed(false))
         }
     }
 
@@ -178,6 +199,10 @@ const Taskbar = () => {
                     </button>
                     <button onClick={()=> OniOnClick()} style={{order: OniOrder}} className={isOniOnTaskbar===false ? "hidden" : isOniActive ? `h-8 w-20 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-20 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
                         Oni
+                    </button>
+                    {/* ------Fetch Stuff---------- */}
+                    <button onClick={()=> FetchOnClick()} style={{order: FetchOrder}} className={isFetchOnTaskbar===false ? "hidden" : isFetchActive ? `h-8 w-20 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-20 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
+                        Fetch Form
                     </button>
                 </div>
                 <div className="flex items-center pr-1">
