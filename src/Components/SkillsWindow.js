@@ -81,9 +81,11 @@ const SkillsWindow = () => {
         dispatch(changeSkillsOnTaskbar(true))
     }
 
-    const gridClass = classNames('grid', 'grid-cols-2', 'place-items-center', 'pt-10', 'gap-y-10', {
-        'sm:grid-cols-3': divSize.width + deltaWidthSize >=640,
-        'lg:grid-cols-5': divSize.width + deltaWidthSize >=1024 || isSkillsMax
+    const gridClass = classNames('grid', 'place-items-center', 'pt-10', 'gap-y-10', {
+        'grid-cols-2': divSize.width + deltaWidthSize < 640,
+        'grid-cols-3': (divSize.width + deltaWidthSize >=640 && divSize.width + deltaWidthSize < 1024),
+        'grid-cols-4': (divSize.width + deltaWidthSize >=1024 && divSize.width + deltaWidthSize < 1280),
+        'grid-cols-5': divSize.width + deltaWidthSize >=1280 || isSkillsMax
     })
 
     const gridItemClass = classNames("flex flex-col items-center text-xl space-y-4 font-bold")
@@ -182,7 +184,7 @@ const SkillsWindow = () => {
                 </div>
             </div>
             <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 700, y: -300}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" onResize={(e,dir,ref,delta) => setDeltaWidthSize(delta.width)} onResizeStop={(e,dir,ref,delta)=>setDivSize({width:divSize.width+delta.width, height: divSize.height+delta.height})} style={isSkillsClosed || isSkillsMax ? {zIndex: -100, position: "absolute"} : isSkillsActive ? {zIndex:zValue, position: "absolute"}: {zIndex:zValue-1, position: "absolute"}} defaultSize={{ width: divSize.width, height: divSize.height}} minWidth={300} minHeight={200} enable={!isSkillsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+                <Resizable bounds="parent" onResize={(e,dir,ref,delta) => {setDeltaWidthSize(delta.width)}} onResizeStop={()=>{setDivSize({width:divSize.width+deltaWidthSize});setDeltaWidthSize(0)}} style={isSkillsClosed || isSkillsMax ? {zIndex: -100, position: "absolute"} : isSkillsActive ? {zIndex:zValue, position: "absolute"}: {zIndex:zValue-1, position: "absolute"}} defaultSize={{ width: divSize.width, height: divSize.height}} minWidth={300} minHeight={200} enable={!isSkillsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isSkillsClosed ? isSkillsMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">
