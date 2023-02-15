@@ -7,6 +7,7 @@ import hidebutton from '../assets/icons/hide-icon.png'
 import maximizebutton from '../assets/icons/maximize-icon.png'
 import minimizebutton from '../assets/icons/minimize-icon.png'
 import msagentsmall from '../assets/icons/msagentsmall.png'
+import selfie from '../assets/images/AboutMe.jpg'
 
 
 const AboutMeWindow = () => {
@@ -64,12 +65,34 @@ const AboutMeWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <p>Hello! I'm Andrew and I will fill this out soon!</p>
+                            <div>
+                                <h1 className="text-6xl font-bold pl-8 pt-5">About Me</h1>
+                            </div>
+                            <div className="flex flex-row pt-5 space-x-6">
+                                <div className="w-1/3 pl-4">
+                                    <img alt="clueless man looking at phone" src={selfie}/>
+                                </div>
+                                <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
+                                    <p className="indent-8">
+                                        What's up! I'm Andrew! People like to call me "That super experienced software engineering guy who is also really cool." 
+                                    </p>    
+                                    <p className="indent-8">
+                                        Okay no one does, but I'll get there one day I swear.
+                                        I am a graduate of Hack Reactor's 19 week software engineering coding boot camp where I learned full stack web development. Prior to that I was working as a CAD Designer at 
+                                        an orthodontic startup! I hold degrees in Chemical and Mechanical Engineering which is fancy talk for I like solving problems. When I'm not 
+                                        working, you can catch me playing video games, watching shows, spending time with my dog Oni, or trying to come up with a better About Me page.
+                                    </p>
+                                    <p className="indent-8">
+                                        Feel free to take a look around this website that I spent too many nights burning the midnight oil for. And don't hesitate to reach out to me with employment
+                                        opportunities! If my LinkedIn still says "Open To Work," I am still looking for a job. If you want to reach out to just chat, that's okay too. 
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -200}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isAboutMeClosed || isAboutMeMax ? {zIndex: -100, position: "absolute"} : isAboutMeActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isAboutMeClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 400, y: -300}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isAboutMeClosed || isAboutMeMax ? {zIndex: -100, position: "absolute"} : isAboutMeActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 1000, height:600}} minWidth={300} minHeight={200} enable={!isAboutMeClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isAboutMeClosed ? isAboutMeMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">
@@ -83,7 +106,29 @@ const AboutMeWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <p>Hello! I'm Andrew and I will fill this out soon!</p>
+                            <div>
+                                <h1 className="text-6xl font-bold pl-8 pt-5">About Me</h1>
+                            </div>
+                            <div className="flex flex-row pt-5 space-x-6">
+                                <div className="w-1/3 pl-4">
+                                    <img alt="clueless man looking at phone" src={selfie}/>
+                                </div>
+                                <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
+                                    <p className="indent-8">
+                                        What's up! I'm Andrew! People like to call me "That super experienced software engineering guy who is also really cool." 
+                                    </p>    
+                                    <p className="indent-8">
+                                        Okay no one does, but I'll get there one day I swear.
+                                        I am a graduate of Hack Reactor's 19 week software engineering coding boot camp where I learned full stack web development. Prior to that I was working as a CAD Designer at 
+                                        an orthodontic startup! I hold degrees in Chemical and Mechanical Engineering which is fancy talk for I like solving problems. When I'm not 
+                                        working, you can catch me playing video games, watching shows, spending time with my dog Oni, or trying to come up with a better About Me page.
+                                    </p>
+                                    <p className="indent-8">
+                                        Feel free to take a look around this website that I spent too many nights burning the midnight oil for. And don't hesitate to reach out to me with employment
+                                        opportunities! If my LinkedIn still says "Open To Work," I am still looking for a job. If you want to reach out to just chat, that's okay too. 
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Resizable>
