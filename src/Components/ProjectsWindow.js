@@ -36,6 +36,7 @@ const ProjectsWindow = () => {
         } else {
             dispatch(changeProjectsMax(false))
         }
+        incrementGlobalZ()
         setActiveWindow()
     }
 

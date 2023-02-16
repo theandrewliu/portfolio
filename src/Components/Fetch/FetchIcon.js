@@ -39,7 +39,7 @@ const FetchIcon = () => {
     }
 
     return (
-    <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75} defaultPosition={{x:2200, y:-100}}>
+    <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75} defaultPosition={{x:200, y:-100}}>
         <div className="pb-3 justify-center flex z-[5]">
             <button id="icon" type="button" title="Contact Me">
                 <img draggable={false} className="pl-3" alt="contact me" src={FetchImage}/>
