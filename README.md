@@ -6,7 +6,7 @@ walkthrough. I was inspired by the Windows 95/98 Style Website by [Grovy](https:
 
 
 This portfolio website was coded entirely in JavaScript using React for dynamic web components, Redux for state management, and TailwindCSS for CSS styling.
-Specific node package modules I'd like to highlight are [re-resizable](https://www.npmjs.com/package/re-resizable/v/6.9.9) and (react-draggable)(https://www.npmjs.com/package/react-draggable/v/4.4.4)
+Specific node package modules I'd like to highlight are [re-resizable](https://www.npmjs.com/package/re-resizable/v/6.9.9) and [react-draggable](https://www.npmjs.com/package/react-draggable/v/4.4.4)
 A module I came across later in my development for this portfolio was [Classnames](https://www.npmjs.com/package/classnames), which allows for easier conditional CSS styling when using Tailwind.
 
 The icons I used to open up separate windows are from [Alex Meub](https://win98icons.alexmeub.com/)
