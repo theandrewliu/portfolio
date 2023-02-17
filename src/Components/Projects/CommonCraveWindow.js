@@ -22,6 +22,7 @@ const CommonCraveWindow = () => {
     const isCommonCraveClosed = useSelector((state) => state.home.isCommonCraveClosed)
     const isCommonCraveActive = useSelector((state) => state.home.isCommonCraveActive)
     const isCommonCraveMax = useSelector((state) => state.home.isCommonCraveMax)
+    const screenSize = useSelector((state) => state.home.screenSize)
     const zValue = useSelector((state) => state.home.CommonCraveZ)
 
 
@@ -86,8 +87,8 @@ const CommonCraveWindow = () => {
                         </div>
                     </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 350, y: -500}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isCommonCraveClosed || isCommonCraveMax ? {zIndex: -100, position: "absolute"} : isCommonCraveActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 1000, height:600}} minWidth={300} minHeight={200} enable={!isCommonCraveClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: screenSize.width*(1/5), y: screenSize.height*(1/10)}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isCommonCraveClosed || isCommonCraveMax ? {zIndex: -100, position: "absolute"} : isCommonCraveActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: screenSize.width*(1/2), height:screenSize.height*(6/10)}} minWidth={screenSize.width*(1/6)} minHeight={screenSize.height*(1/5)} enable={!isCommonCraveClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isCommonCraveClosed ? isCommonCraveMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

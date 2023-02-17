@@ -22,6 +22,7 @@ const OverRatedWindow = () => {
     const isOverRatedClosed = useSelector((state) => state.home.isOverRatedClosed)
     const isOverRatedActive = useSelector((state) => state.home.isOverRatedActive)
     const isOverRatedMax = useSelector((state) => state.home.isOverRatedMax)
+    const screenSize = useSelector((state) => state.home.screenSize)
     const zValue = useSelector((state) => state.home.OverRatedZ)
 
 
@@ -86,8 +87,8 @@ const OverRatedWindow = () => {
                         </div>
                     </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 350, y: -500}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isOverRatedClosed || isOverRatedMax ? {zIndex: -100, position: "absolute"} : isOverRatedActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 1000, height:600}} minWidth={300} minHeight={200} enable={!isOverRatedClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: screenSize.width*(1/5), y: screenSize.height*(2/11)}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isOverRatedClosed || isOverRatedMax ? {zIndex: -100, position: "absolute"} : isOverRatedActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: screenSize.width*(1/2), height:screenSize.height*(6/10)}} minHeight={screenSize.height*(1/5)} enable={!isOverRatedClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isOverRatedClosed ? isOverRatedMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

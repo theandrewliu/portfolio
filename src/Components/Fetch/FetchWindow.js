@@ -14,6 +14,7 @@ const FetchWindow = () => {
     const isFetchClosed = useSelector((state) => state.home.isFetchClosed)
     const isFetchActive = useSelector((state) => state.home.isFetchActive)
     const isFetchMax = useSelector((state) => state.home.isFetchMax)
+    const screenSize = useSelector((state) => state.home.screenSize)
     const zValue = useSelector((state) => state.home.FetchZ)
 
     const initialValues = {
@@ -89,6 +90,7 @@ const FetchWindow = () => {
         } else {
             dispatch(changeFetchMax(false))
         }
+        incrementGlobalZ()
         setActiveWindow()
     }
 
@@ -195,8 +197,8 @@ const FetchWindow = () => {
                 </div>
             </div>
         </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 550, y: -490}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isFetchClosed || isFetchMax ? {zIndex: -100, position: "absolute"} : isFetchActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 600, height:600}} minWidth={300} minHeight={200} enable={!isFetchClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: screenSize.width*(.35), y: screenSize.height*(.15)}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isFetchClosed || isFetchMax ? {zIndex: -100, position: "absolute"} : isFetchActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: screenSize.width*(1/4), height:screenSize.height*(4/7)}} minWidth={screenSize.width*(1/6)} minHeight={screenSize.height*(1/5)} enable={!isFetchClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isFetchClosed ? isFetchMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

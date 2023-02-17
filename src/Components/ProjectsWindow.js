@@ -26,9 +26,10 @@ const ProjectsWindow = () => {
     const isProjectsClosed = useSelector((state) => state.home.isProjectsClosed)
     const isProjectsActive = useSelector((state) => state.home.isProjectsActive)
     const isProjectsMax = useSelector((state) => state.home.isProjectsMax)
+    const screenSize = useSelector((state) => state.home.screenSize)
     const zValue = useSelector((state) => state.home.ProjectsZ)
 
-    const [divSize, setDivSize] = useState({width: 700, height: 550})
+    const [divSize, setDivSize] = useState({width: screenSize.width*(1/4), height: screenSize.height*(1/4)})
     const [deltaWidthSize, setDeltaWidthSize ] = useState(0)
 
     function setActiveWindow() {
@@ -90,8 +91,8 @@ const ProjectsWindow = () => {
                     </div>
                 </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -200}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" onResize={(e,dir,ref,delta) => {setDeltaWidthSize(delta.width)}} onResizeStop={()=>{setDivSize({width:divSize.width+deltaWidthSize});setDeltaWidthSize(0)}} style={isProjectsClosed || isProjectsMax ? {zIndex: -100, position: "absolute"} : isProjectsActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isProjectsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: screenSize.width*(2/5), y: screenSize.height*(1/5)}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" onResize={(e,dir,ref,delta) => {setDeltaWidthSize(delta.width)}} onResizeStop={()=>{setDivSize({width:divSize.width+deltaWidthSize});setDeltaWidthSize(0)}} style={isProjectsClosed || isProjectsMax ? {zIndex: -100, position: "absolute"} : isProjectsActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: screenSize.width*(1/4), height:screenSize.height*(1/3)}} minWidth={screenSize.width*(1/6)} minHeight={screenSize.height*(1/5)} enable={!isProjectsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isProjectsClosed ? isProjectsMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

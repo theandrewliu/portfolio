@@ -24,12 +24,8 @@ const Home = () => {
     dispatch(setScreenSize({width: window.innerWidth, height: window.innerHeight}))
     const screenSize = useSelector((state) => state.home.screenSize)
 
-
-    console.log(screenSize)
-
-
     return (
-        <div className="bg-windows-bg" style={{height:screenSize.height-40}}>
+        <div className="bg-windows-bg flex flex-row" style={{height:screenSize.height-40}}>
             <div className="pt-11 pl-8 scale-75 w-1/12">
                 <div className="flex flex-col relative">
                     <AboutMeIcon />

@@ -15,6 +15,7 @@ const AboutMeWindow = () => {
     const isAboutMeClosed = useSelector((state) => state.home.isAboutMeClosed)
     const isAboutMeActive = useSelector((state) => state.home.isAboutMeActive)
     const isAboutMeMax = useSelector((state) => state.home.isAboutMeMax)
+    const screenSize = useSelector((state) => state.home.screenSize)
     const zValue = useSelector((state) => state.home.AboutMeZ)
 
 
@@ -91,8 +92,8 @@ const AboutMeWindow = () => {
                         </div>
                     </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 350, y: -500}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isAboutMeClosed || isAboutMeMax ? {zIndex: -100, position: "absolute"} : isAboutMeActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 1000, height:600}} minWidth={300} minHeight={200} enable={!isAboutMeClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: screenSize.width*.25, y: screenSize.height*.1}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isAboutMeClosed || isAboutMeMax ? {zIndex: -100, position: "absolute"} : isAboutMeActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: screenSize.width/2, height:screenSize.height*.66}} minWidth={screenSize.width*(1/6)} minHeight={screenSize.height*.2} enable={!isAboutMeClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isAboutMeClosed ? isAboutMeMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">

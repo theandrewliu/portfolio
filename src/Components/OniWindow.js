@@ -18,6 +18,7 @@ const OniWindow = () => {
     const isOniClosed = useSelector((state) => state.home.isOniClosed)
     const isOniActive = useSelector((state) => state.home.isOniActive)
     const isOniMax = useSelector((state) => state.home.isOniMax)
+    const screenSize = useSelector((state) => state.home.screenSize)
     const zValue = useSelector((state) => state.home.OniZ)
 
     function setActiveWindow() {
@@ -85,8 +86,8 @@ const OniWindow = () => {
                     </div>
                 </div>
             </div>
-            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 400, y: -550}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isOniClosed || isOniMax ? {zIndex: -100,position: "absolute"} : isOniActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 900, height:600}} minWidth={300} minHeight={200} enable={!isOniClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+            <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: screenSize.width*(1/5), y: screenSize.height*(1/5)}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
+                <Resizable bounds="parent" style={isOniClosed || isOniMax ? {zIndex: -100,position: "absolute"} : isOniActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: screenSize.width*.5, height:screenSize.height*.6}} minWidth={screenSize.width*(1/6)} minHeight={screenSize.height*(1/5)} enable={!isOniClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isOniClosed ? isOniMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">
