@@ -42,6 +42,8 @@ export const homeSlice = createSlice({
         globalZ:10,
         //----------Start Button------------------
         isStartActive: false,
+        //----------Screen Size----------------
+        screenSize: { width:0, height:0 },
         //----------------Fetch Stuff-------------
         isFetchClosed: true,
         isFetchActive: false,
@@ -49,8 +51,24 @@ export const homeSlice = createSlice({
         FetchZ: 10,
         FetchOrder: 10,
         FetchOnTaskbar: false,
+        //-----------Individual Projects-----------
+        ////--------CommonCrave----------
+        isCommonCraveClosed: true,
+        isCommonCraveActive: false,
+        isCommonCraveMax: false,
+        CommonCraveZ: 10,
+        CommonCraveOrder: 10,
+        CommonCraveOnTaskbar: false,
+        ////---------OverRated------------
+        isOverRatedClosed: true,
+        isOverRatedActive: false,
+        isOverRatedMax: false,
+        OverRatedZ: 10,
+        OverRatedOrder: 10,
+        OverRatedOnTaskbar: false,
     },
     reducers: {
+        //--------------About Me--------------
         changeAboutMeActive: (state, action) => {
             state.isAboutMeActive = action.payload
         },
@@ -69,7 +87,7 @@ export const homeSlice = createSlice({
         setAboutMeZ:(state)=>{
             state.AboutMeZ = state.globalZ
         },
-
+        //---------------Contact Me----------------
         changeContactMeActive: (state, action) => {
             state.isContactMeActive = action.payload
         },
@@ -88,7 +106,7 @@ export const homeSlice = createSlice({
         setContactMeZ:(state) => {
             state.ContactMeZ = state.globalZ
         },
-
+        //--------------Oni----------------
         changeOniActive: (state, action) => {
             state.isOniActive = action.payload
         },
@@ -107,7 +125,7 @@ export const homeSlice = createSlice({
         setOniZ: (state) =>{
             state.OniZ = state.globalZ
         },
-
+        //------------Projects---------------
         changeProjectsActive: (state, action) => {
             state.isProjectsActive = action.payload
         },
@@ -126,7 +144,7 @@ export const homeSlice = createSlice({
         setProjectsZ:(state) =>{
             state.ProjectsZ = state.globalZ
         },
-
+        //-------------Skills----------------
         changeSkillsActive: (state, action) => {
             state.isSkillsActive = action.payload
         },
@@ -145,7 +163,45 @@ export const homeSlice = createSlice({
         setSkillsZ:(state) => {
             state.SkillsZ = state.globalZ
         },
-
+        //----------------Common Crave Project----------------
+        changeCommonCraveActive: (state, action) => {
+            state.isCommonCraveActive = action.payload
+        },
+        changeCommonCraveClosed: (state, action) => {
+            state.isCommonCraveClosed = action.payload
+        },
+        changeCommonCraveMax: (state, action) => {
+            state.isCommonCraveMax = action.payload
+        },
+        changeCommonCraveOnTaskbar: (state, action) => {
+            state.CommonCraveOnTaskbar = action.payload
+        },
+        setCommonCraveOrder:(state) =>{
+            state.CommonCraveOrder = state.globalZ
+        },
+        setCommonCraveZ:(state) => {
+            state.CommonCraveZ = state.globalZ
+        },
+        //---------------------OverRated Project-----------
+        changeOverRatedActive: (state, action) => {
+            state.isOverRatedActive = action.payload
+        },
+        changeOverRatedClosed: (state, action) => {
+            state.isOverRatedClosed = action.payload
+        },
+        changeOverRatedMax: (state, action) => {
+            state.isOverRatedMax = action.payload
+        },
+        changeOverRatedOnTaskbar: (state, action) => {
+            state.OverRatedOnTaskbar = action.payload
+        },
+        setOverRatedOrder:(state) =>{
+            state.OverRatedOrder = state.globalZ
+        },
+        setOverRatedZ:(state) => {
+            state.OverRatedZ = state.globalZ
+        },
+        //---------Universal------------
         changeAllActiveToFalse: (state) => {
             state.isSkillsActive = false
             state.isAboutMeActive = false
@@ -153,6 +209,8 @@ export const homeSlice = createSlice({
             state.isProjectsActive = false
             state.isContactMeActive = false
             state.isStartActive = false
+            state.isCommonCraveActive = false
+            state.isOverRatedActive = false
             //----------------Fetch Stuff------------------
             state.isFetchActive = false
         },
@@ -162,6 +220,8 @@ export const homeSlice = createSlice({
             state.isOniClosed = true
             state.isProjectsClosed = true
             state.isSkillsClosed = true
+            state.isCommonCraveClosed = true
+            state.isOverRatedClosed = true
             //-----------------Fetch Stuff--------------------
             state.isFetchClosed = true
         },
@@ -171,6 +231,10 @@ export const homeSlice = createSlice({
         changeStartActive:(state, action) => {
             state.isStartActive = action.payload
         },
+        setScreenSize: (state, action) => {
+            state.screenSize = action.payload
+        },
+        //---------------------------------------------------------------
         //----------------Fetch Stuff-----------------------
         changeFetchActive: (state, action) => {
             state.isFetchActive = action.payload
@@ -194,40 +258,61 @@ export const homeSlice = createSlice({
 })
 
 export const { 
+    //--------------About Me--------
     changeAboutMeActive, 
     changeAboutMeClosed,
     changeAboutMeMax,
     changeAboutMeOnTaskbar,
     setAboutMeOrder,
-    setAboutMeZ, 
+    setAboutMeZ,
+    //-------------Contact Me----------- 
     changeContactMeActive, 
     changeContactMeClosed,
     changeContactMeMax,
     changeContactMeOnTaskbar,
     setContactMeOrder,
     setContactMeZ,
+    //-------------Oni---------------
     changeOniActive,
     changeOniClosed,
     changeOniMax,
     changeOniOnTaskbar,
     setOniOrder,
     setOniZ,
+    //-----------Projects-----------
     changeProjectsActive,
     changeProjectsClosed,
     changeProjectsMax,
     changeProjectsOnTaskbar,
     setProjectsOrder,
     setProjectsZ,
+    //---------Skills--------------
     changeSkillsActive,
     changeSkillsClosed,
     changeSkillsMax,
     changeSkillsOnTaskbar,
     setSkillsOrder,
     setSkillsZ,
+    //--------Common Crave Project-------
+    changeCommonCraveActive,
+    changeCommonCraveClosed,
+    changeCommonCraveMax,
+    changeCommonCraveOnTaskbar,
+    setCommonCraveOrder,
+    setCommonCraveZ,
+    //--------OverRated Project--------
+    changeOverRatedActive,
+    changeOverRatedClosed,
+    changeOverRatedMax,
+    changeOverRatedOnTaskbar,
+    setOverRatedOrder,
+    setOverRatedZ,
+    //----------Universal------------
     changeAllActiveToFalse,
     changeAllToClosed,
     incrementGlobalZ,
     changeStartActive,
+    setScreenSize,
     //---------------------Fetch Stuff----------------
     changeFetchActive,
     changeFetchClosed,

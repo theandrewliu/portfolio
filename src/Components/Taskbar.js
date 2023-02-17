@@ -12,12 +12,18 @@ import {
     changeContactMeClosed,
     changeOniActive,
     changeOniClosed,
+    changeCommonCraveActive,
+    changeCommonCraveClosed,
+    changeOverRatedActive,
+    changeOverRatedClosed,
     changeAllActiveToFalse,
     setAboutMeZ,
     setContactMeZ,
     setOniZ,
     setProjectsZ,
     setSkillsZ,
+    setCommonCraveZ,
+    setOverRatedZ,
     incrementGlobalZ,
     changeStartActive,
     changeFetchActive,
@@ -43,6 +49,12 @@ const Taskbar = () => {
     const isOniActive = useSelector((state) => state.home.isOniActive)
     const isOniOnTaskbar = useSelector((state) => state.home.OniOnTaskbar)
     const OniOrder = useSelector((state) => state.home.OniOrder)
+    const isCommonCraveActive = useSelector((state) => state.home.isCommonCraveActive)
+    const isCommonCraveOnTaskbar = useSelector((state) => state.home.CommonCraveOnTaskbar)
+    const CommonCraveOrder = useSelector((state) => state.home.CommonCraveOrder)
+    const isOverRatedActive = useSelector((state) => state.home.isOverRatedActive)
+    const isOverRatedOnTaskbar = useSelector((state) => state.home.OverRatedOnTaskbar)
+    const OverRatedOrder = useSelector((state) => state.home.OverRatedOrder)
     const isStartActive = useSelector((state) => state.home.isStartActive)
     //----------Fetch Stuff-----------
     const isFetchActive = useSelector((state)=> state.home.isFetchActive)
@@ -112,6 +124,32 @@ const Taskbar = () => {
             dispatch(setOniZ())
             dispatch(changeOniActive(true))
             dispatch(changeOniClosed(false))
+        }
+    }
+
+    function CommonCraveOnClick() {
+        dispatch(incrementGlobalZ())
+        if (isCommonCraveActive === true) {
+            dispatch(changeCommonCraveActive(false))
+            dispatch(changeCommonCraveClosed(true))
+        } else {
+            dispatch(changeAllActiveToFalse())
+            dispatch(setCommonCraveZ())
+            dispatch(changeCommonCraveActive(true))
+            dispatch(changeCommonCraveClosed(false))
+        }
+    }
+
+    function OverRatedOnClick() {
+        dispatch(incrementGlobalZ())
+        if (isOverRatedActive === true) {
+            dispatch(changeOverRatedActive(false))
+            dispatch(changeOverRatedClosed(true))
+        } else {
+            dispatch(changeAllActiveToFalse())
+            dispatch(setOverRatedZ())
+            dispatch(changeOverRatedActive(true))
+            dispatch(changeOverRatedClosed(false))
         }
     }
 
@@ -200,8 +238,14 @@ const Taskbar = () => {
                     <button onClick={()=> OniOnClick()} style={{order: OniOrder}} className={isOniOnTaskbar===false ? "hidden" : isOniActive ? `h-8 w-20 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-20 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
                         Oni
                     </button>
+                    <button onClick={()=> CommonCraveOnClick()} style={{order: CommonCraveOrder}} className={isCommonCraveOnTaskbar===false ? "hidden" : isCommonCraveActive ? `h-8 w-36 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-36 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
+                        Common Crave
+                    </button>
+                    <button onClick={()=> OverRatedOnClick()} style={{order: OverRatedOrder}} className={isOverRatedOnTaskbar===false ? "hidden" : isOverRatedActive ? `h-8 w-36 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-36 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
+                        OverRated
+                    </button>
                     {/* ------Fetch Stuff---------- */}
-                    <button onClick={()=> FetchOnClick()} style={{order: FetchOrder}} className={isFetchOnTaskbar===false ? "hidden" : isFetchActive ? `h-8 w-20 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-20 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
+                    <button onClick={()=> FetchOnClick()} style={{order: FetchOrder}} className={isFetchOnTaskbar===false ? "hidden" : isFetchActive ? `h-8 w-24 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-24 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
                         Fetch Form
                     </button>
                 </div>

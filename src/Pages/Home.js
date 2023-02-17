@@ -9,15 +9,27 @@ import ContactMeIcon from "../Components/ContactMeIcon";
 import ContactMeWindow from "../Components/ContactMeWindow";
 import ProjectsIcon from "../Components/ProjectsIcon";
 import ProjectsWindow from "../Components/ProjectsWindow";
-//------Fetch
+import CommonCraveWindow from "../Components/Projects/CommonCraveWindow";
+import OverRatedWindow from "../Components/Projects/OverRatedWindow";
+import { setScreenSize } from "../Redux/homeSlice";
+import {useSelector, useDispatch } from "react-redux"
+//------Fetch Stuff-------------
 import FetchIcon from "../Components/Fetch/FetchIcon";
 import FetchWindow from "../Components/Fetch/FetchWindow";
 
-let height = window.innerHeight - 40 //subtracting the height of the taskbar
 
 const Home = () => {
+    const dispatch = useDispatch();
+
+    dispatch(setScreenSize({width: window.innerWidth, height: window.innerHeight}))
+    const screenSize = useSelector((state) => state.home.screenSize)
+
+
+    console.log(screenSize)
+
+
     return (
-        <div className="bg-windows-bg" style={{height:height}}>
+        <div className="bg-windows-bg" style={{height:screenSize.height-40}}>
             <div className="pt-11 pl-8 scale-75 w-1/12">
                 <div className="flex flex-col relative">
                     <AboutMeIcon />
@@ -35,6 +47,8 @@ const Home = () => {
             <ProjectsWindow />
             <ContactMeWindow />
             <OniWindow />
+            <CommonCraveWindow />
+            <OverRatedWindow />
             {/* -------Fetch Stuff--------- */}
             <FetchWindow />
             <Taskbar />

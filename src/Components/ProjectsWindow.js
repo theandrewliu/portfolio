@@ -1,12 +1,24 @@
 import Draggable from "react-draggable"
 import { Resizable } from "re-resizable"
+import classNames from 'classnames'
+import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { changeProjectsActive, changeProjectsClosed, changeProjectsMax, changeProjectsOnTaskbar, changeAllActiveToFalse, setProjectsZ, incrementGlobalZ } from "../Redux/homeSlice";
+import { 
+    changeProjectsActive, 
+    changeProjectsClosed, 
+    changeProjectsMax, 
+    changeProjectsOnTaskbar, 
+    changeAllActiveToFalse, 
+    setProjectsZ, 
+    incrementGlobalZ 
+} from "../Redux/homeSlice";
 import closebutton from '../assets/icons/close-icon.png'
 import hidebutton from '../assets/icons/hide-icon.png'
 import maximizebutton from '../assets/icons/maximize-icon.png'
 import minimizebutton from '../assets/icons/minimize-icon.png'
 import briefcasesmall from '../assets/icons/briefcase-small.png'
+import CommonCraveIcon from "./Projects/CommonCraveIcon"
+import OverRatedIcon from "./Projects/OverRatedIcon"
 
 
 const ProjectsWindow = () => {
@@ -15,6 +27,9 @@ const ProjectsWindow = () => {
     const isProjectsActive = useSelector((state) => state.home.isProjectsActive)
     const isProjectsMax = useSelector((state) => state.home.isProjectsMax)
     const zValue = useSelector((state) => state.home.ProjectsZ)
+
+    const [divSize, setDivSize] = useState({width: 700, height: 550})
+    const [deltaWidthSize, setDeltaWidthSize ] = useState(0)
 
     function setActiveWindow() {
         dispatch(changeAllActiveToFalse())
@@ -46,6 +61,15 @@ const ProjectsWindow = () => {
         dispatch(changeProjectsOnTaskbar(true))
     }
 
+    const gridClass = classNames('grid place-items-center pt-10 gap-y-5', {
+        'grid-cols-2': divSize.width + deltaWidthSize < 640,
+        'grid-cols-3': (divSize.width + deltaWidthSize >=640 && divSize.width + deltaWidthSize < 1024),
+        'grid-cols-4': (divSize.width + deltaWidthSize >=1024 && divSize.width + deltaWidthSize < 1280),
+        'grid-cols-5': divSize.width + deltaWidthSize >=1280 || isProjectsMax
+    })
+
+    const gridItemClass = classNames("flex flex-col items-center text-xl space-y-4 font-bold")
+
     return (
         <>
             <div className={isProjectsMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0`: "hidden"} style={isProjectsMax ? { zIndex: zValue}:{}}>
@@ -62,12 +86,12 @@ const ProjectsWindow = () => {
                         </div>
                     </div>
                     <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                        <p>folder icons of projects will go here</p>
+                        WIP
                     </div>
                 </div>
             </div>
             <Draggable handle="#handle"  bounds="parent" defaultPosition={{x: 600, y: -200}} onStart={()=>{dispatch(incrementGlobalZ());setActiveWindow()}}>
-                <Resizable bounds="parent" style={isProjectsClosed || isProjectsMax ? {zIndex: -100, position: "absolute"} : isProjectsActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isProjectsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
+                <Resizable bounds="parent" onResize={(e,dir,ref,delta) => {setDeltaWidthSize(delta.width)}} onResizeStop={()=>{setDivSize({width:divSize.width+deltaWidthSize});setDeltaWidthSize(0)}} style={isProjectsClosed || isProjectsMax ? {zIndex: -100, position: "absolute"} : isProjectsActive ? {zIndex:zValue, position: "absolute"} : {zIndex: zValue-1, position: "absolute"}} defaultSize={{ width: 500, height:275}} minWidth={300} minHeight={200} enable={!isProjectsClosed ? { top:false, right:true, bottom:true, left:false, topRight:false, bottomRight:true, bottomLeft:false, topLeft:false } : { top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}>
                     <div className={!isProjectsClosed ? isProjectsMax ? "hidden" : "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                         <div id="handle" className="flex justify-between bg-title-bar text-white">
                             <div className="flex hover:cursor-default pl-1 pt-1 items-center">
@@ -81,7 +105,14 @@ const ProjectsWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <p>folder icons of projects will go here</p>
+                            <div className={gridClass}>
+                                <div className={gridItemClass}>
+                                    <CommonCraveIcon />
+                                </div>
+                                <div className={gridItemClass}>
+                                    <OverRatedIcon />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Resizable>

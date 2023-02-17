@@ -100,7 +100,7 @@ const FetchWindow = () => {
 
     return (
         <>
-        <div className={isFetchMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0 z-6`: "hidden"} style={isFetchMax ? { zIndex: zValue}:{}}>
+        <div className={isFetchMax ? `w-screen h-screen fixed top-0 right-0 bottom-0 left-0 z-6`: "hidden"} style={isFetchMax ? {zIndex: zValue}:{}}>
             <div className={!isFetchClosed ? "border-4 divide-y-4 border-taskbar flex flex-col h-full relative" : "hidden"} onClick={()=>setActiveWindow()}>
                 <div id="handle" className="flex justify-between bg-title-bar text-white">
                     <div className="flex hover:cursor-default pl-1 pt-1 items-center">
