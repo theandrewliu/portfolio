@@ -119,7 +119,8 @@ const CommonCraveWindow = () => {
                                 <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
                                     Common Crave is an attempt to help groups decide on what to eat. A group leader will create the group, send an invite to the party where each user selects
                                     what type of food they're craving. If they have a particular restaurant in mind, there's an option to type in a restaurant name and the categories will be
-                                    selected. After everyone's decided, a restaurant that is the most craved and equidistant to all members will be selected.
+                                    selected. After everyone's decided, a restaurant that is the most craved and equidistant to all members will be selected. This project is a two person project.
+                                    The website utilizes a MERN stack with TailwindCSS for styling. 
                                     <br></br>
                                     <br></br>
                                     Currently the website is a work in progress but I will update this description when it gets completed.                

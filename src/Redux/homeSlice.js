@@ -44,13 +44,6 @@ export const homeSlice = createSlice({
         isStartActive: false,
         //----------Screen Size----------------
         screenSize: { width:0, height:0 },
-        //----------------Fetch Stuff-------------
-        isFetchClosed: true,
-        isFetchActive: false,
-        isFetchMax: false,
-        FetchZ: 10,
-        FetchOrder: 10,
-        FetchOnTaskbar: false,
         //-----------Individual Projects-----------
         ////--------CommonCrave----------
         isCommonCraveClosed: true,
@@ -238,8 +231,6 @@ export const homeSlice = createSlice({
             state.isCommonCraveActive = false
             state.isOverRatedActive = false
             state.isPortfolioActive = false
-            //----------------Fetch Stuff------------------
-            state.isFetchActive = false
         },
         changeAllToClosed: (state) => {
             state.isAboutMeClosed = true
@@ -250,8 +241,6 @@ export const homeSlice = createSlice({
             state.isCommonCraveClosed = true
             state.isOverRatedClosed = true
             state.isPortfolioClosed = true
-            //-----------------Fetch Stuff--------------------
-            state.isFetchClosed = true
         },
         incrementGlobalZ: (state) => {
             state.globalZ++
@@ -262,26 +251,6 @@ export const homeSlice = createSlice({
         setScreenSize: (state, action) => {
             state.screenSize = action.payload
         },
-        //---------------------------------------------------------------
-        //----------------Fetch Stuff-----------------------
-        changeFetchActive: (state, action) => {
-            state.isFetchActive = action.payload
-        },
-        changeFetchClosed: (state, action) => {
-            state.isFetchClosed = action.payload
-        },
-        changeFetchOnTaskbar: (state, action) => {
-            state.FetchOnTaskbar = action.payload
-        },
-        changeFetchMax: (state, action) => {
-            state.isFetchMax = action.payload
-        },
-        setFetchZ: (state) => {
-            state.FetchZ = state.globalZ
-        },
-        setFetchOrder: (state) => {
-            state.FetchOrder = state.globalZ
-        }
     },
 })
 
@@ -348,13 +317,6 @@ export const {
     incrementGlobalZ,
     changeStartActive,
     setScreenSize,
-    //---------------------Fetch Stuff----------------
-    changeFetchActive,
-    changeFetchClosed,
-    changeFetchMax,
-    changeFetchOnTaskbar,
-    setFetchZ,
-    setFetchOrder,
 } = homeSlice.actions
 
 export default homeSlice.reducer

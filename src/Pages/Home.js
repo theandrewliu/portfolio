@@ -14,9 +14,6 @@ import OverRatedWindow from "../Components/Projects/OverRatedWindow";
 import PortfolioWindow from "../Components/Projects/PorfolioWindow";
 import { setScreenSize } from "../Redux/homeSlice";
 import {useSelector, useDispatch } from "react-redux"
-//------Fetch Stuff-------------
-import FetchIcon from "../Components/Fetch/FetchIcon";
-import FetchWindow from "../Components/Fetch/FetchWindow";
 
 
 const Home = () => {
@@ -36,8 +33,6 @@ const Home = () => {
                     <OniIcon />
                 </div>
                 
-                <FetchIcon />
-                
             </div>
             <AboutMeWindow/>
             <SkillsWindow />
@@ -47,9 +42,6 @@ const Home = () => {
             <CommonCraveWindow />
             <OverRatedWindow />
             <PortfolioWindow />
-            {/* -------Fetch Stuff--------- */}
-            <FetchWindow />
-            {/* --------------------------- */}
             <Taskbar />
         </div>
     )

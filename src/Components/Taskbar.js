@@ -29,9 +29,6 @@ import {
     setPortfolioZ,
     incrementGlobalZ,
     changeStartActive,
-    changeFetchActive,
-    changeFetchClosed,
-    setFetchZ
 } from "../Redux/homeSlice"
 
 
@@ -62,10 +59,6 @@ const Taskbar = () => {
     const isPortfolioOnTaskbar = useSelector((state) => state.home.PortfolioOnTaskbar)
     const PortfolioOrder = useSelector((state) => state.home.PortfolioOrder)
     const isStartActive = useSelector((state) => state.home.isStartActive)
-    //----------Fetch Stuff-----------
-    const isFetchActive = useSelector((state)=> state.home.isFetchActive)
-    const isFetchOnTaskbar = useSelector((state)=> state.home.FetchOnTaskbar)
-    const FetchOrder = useSelector((state)=> state.home.FetchOrder)
 
 
     function AboutMeOnClick() {
@@ -182,20 +175,6 @@ const Taskbar = () => {
         }
     }
 
-    //----------Fetch Stuff------------
-    function FetchOnClick(){
-        dispatch(incrementGlobalZ())
-        if(isFetchActive === true) {
-            dispatch(changeFetchActive(false))
-            dispatch(changeFetchClosed(true))
-        } else {
-            dispatch(changeAllActiveToFalse())
-            dispatch(setFetchZ())
-            dispatch(changeFetchActive(true))
-            dispatch(changeFetchClosed(false))
-        }
-    }
-
     const locale = 'en';
     const [today, setDate] = useState(new Date())
     useEffect(() => {
@@ -265,10 +244,6 @@ const Taskbar = () => {
                     </button>
                     <button onClick={()=> PortfolioOnClick()} style={{order: PortfolioOrder}} className={isPortfolioOnTaskbar===false ? "hidden" : isPortfolioActive ? `h-8 w-20 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-20 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
                         Portfolio
-                    </button>
-                    {/* ------Fetch Stuff---------- */}
-                    <button onClick={()=> FetchOnClick()} style={{order: FetchOrder}} className={isFetchOnTaskbar===false ? "hidden" : isFetchActive ? `h-8 w-24 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-24 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
-                        Fetch Form
                     </button>
                 </div>
                 <div className="flex items-center pr-1">
