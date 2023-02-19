@@ -66,6 +66,13 @@ export const homeSlice = createSlice({
         OverRatedZ: 10,
         OverRatedOrder: 10,
         OverRatedOnTaskbar: false,
+        ////---------Portfolio------------
+        isPortfolioClosed: true,
+        isPortfolioActive: false,
+        isPortfolioMax: false,
+        PortfolioZ: 10,
+        PortfolioOrder: 10,
+        PortfolioOnTaskbar: false,
     },
     reducers: {
         //--------------About Me--------------
@@ -201,6 +208,25 @@ export const homeSlice = createSlice({
         setOverRatedZ:(state) => {
             state.OverRatedZ = state.globalZ
         },
+        //---------------------Portfolio Project-----------
+        changePortfolioActive: (state, action) => {
+            state.isPortfolioActive = action.payload
+        },
+        changePortfolioClosed: (state, action) => {
+            state.isPortfolioClosed = action.payload
+        },
+        changePortfolioMax: (state, action) => {
+            state.isPortfolioMax = action.payload
+        },
+        changePortfolioOnTaskbar: (state, action) => {
+            state.PortfolioOnTaskbar = action.payload
+        },
+        setPortfolioOrder:(state) =>{
+            state.PortfolioOrder = state.globalZ
+        },
+        setPortfolioZ:(state) => {
+            state.PortfolioZ = state.globalZ
+        },
         //---------Universal------------
         changeAllActiveToFalse: (state) => {
             state.isSkillsActive = false
@@ -211,6 +237,7 @@ export const homeSlice = createSlice({
             state.isStartActive = false
             state.isCommonCraveActive = false
             state.isOverRatedActive = false
+            state.isPortfolioActive = false
             //----------------Fetch Stuff------------------
             state.isFetchActive = false
         },
@@ -222,6 +249,7 @@ export const homeSlice = createSlice({
             state.isSkillsClosed = true
             state.isCommonCraveClosed = true
             state.isOverRatedClosed = true
+            state.isPortfolioClosed = true
             //-----------------Fetch Stuff--------------------
             state.isFetchClosed = true
         },
@@ -307,6 +335,13 @@ export const {
     changeOverRatedOnTaskbar,
     setOverRatedOrder,
     setOverRatedZ,
+    //----------Portfolio Project--------
+    changePortfolioActive,
+    changePortfolioClosed,
+    changePortfolioMax,
+    changePortfolioOnTaskbar,
+    setPortfolioOrder,
+    setPortfolioZ,
     //----------Universal------------
     changeAllActiveToFalse,
     changeAllToClosed,

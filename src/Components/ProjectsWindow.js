@@ -19,6 +19,7 @@ import minimizebutton from '../assets/icons/minimize-icon.png'
 import briefcasesmall from '../assets/icons/briefcase-small.png'
 import CommonCraveIcon from "./Projects/CommonCraveIcon"
 import OverRatedIcon from "./Projects/OverRatedIcon"
+import PortfolioIcon from "./Projects/PortfolioIcon"
 
 
 const ProjectsWindow = () => {
@@ -112,6 +113,9 @@ const ProjectsWindow = () => {
                                 </div>
                                 <div className={gridItemClass}>
                                     <OverRatedIcon />
+                                </div>
+                                <div className={gridItemClass}>
+                                    <PortfolioIcon />
                                 </div>
                             </div>
                         </div>

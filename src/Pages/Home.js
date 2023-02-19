@@ -11,6 +11,7 @@ import ProjectsIcon from "../Components/ProjectsIcon";
 import ProjectsWindow from "../Components/ProjectsWindow";
 import CommonCraveWindow from "../Components/Projects/CommonCraveWindow";
 import OverRatedWindow from "../Components/Projects/OverRatedWindow";
+import PortfolioWindow from "../Components/Projects/PorfolioWindow";
 import { setScreenSize } from "../Redux/homeSlice";
 import {useSelector, useDispatch } from "react-redux"
 //------Fetch Stuff-------------
@@ -45,8 +46,10 @@ const Home = () => {
             <OniWindow />
             <CommonCraveWindow />
             <OverRatedWindow />
+            <PortfolioWindow />
             {/* -------Fetch Stuff--------- */}
             <FetchWindow />
+            {/* --------------------------- */}
             <Taskbar />
         </div>
     )

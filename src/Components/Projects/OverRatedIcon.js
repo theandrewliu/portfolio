@@ -29,7 +29,7 @@ const OverRatedIcon = () => {
     }
 
     return (
-    <div onClick={(event) => {event.stopPropagation();OverRatedOnClick()}}>
+    <div onClick={(event) => {event.stopPropagation(); OverRatedOnClick()}}>
         <div className="pb-3 justify-center flex" style={{zIndex:zValue}}>
             <button id="icon" type="button" title="OverRated">
                 <img draggable={false} className="pl-4" alt="OverRated" src={folder}/>

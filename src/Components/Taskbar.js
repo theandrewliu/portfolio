@@ -16,6 +16,8 @@ import {
     changeCommonCraveClosed,
     changeOverRatedActive,
     changeOverRatedClosed,
+    changePortfolioActive,
+    changePortfolioClosed,
     changeAllActiveToFalse,
     setAboutMeZ,
     setContactMeZ,
@@ -24,6 +26,7 @@ import {
     setSkillsZ,
     setCommonCraveZ,
     setOverRatedZ,
+    setPortfolioZ,
     incrementGlobalZ,
     changeStartActive,
     changeFetchActive,
@@ -55,6 +58,9 @@ const Taskbar = () => {
     const isOverRatedActive = useSelector((state) => state.home.isOverRatedActive)
     const isOverRatedOnTaskbar = useSelector((state) => state.home.OverRatedOnTaskbar)
     const OverRatedOrder = useSelector((state) => state.home.OverRatedOrder)
+    const isPortfolioActive = useSelector((state) => state.home.isPortfolioActive)
+    const isPortfolioOnTaskbar = useSelector((state) => state.home.PortfolioOnTaskbar)
+    const PortfolioOrder = useSelector((state) => state.home.PortfolioOrder)
     const isStartActive = useSelector((state) => state.home.isStartActive)
     //----------Fetch Stuff-----------
     const isFetchActive = useSelector((state)=> state.home.isFetchActive)
@@ -153,6 +159,19 @@ const Taskbar = () => {
         }
     }
 
+    function PortfolioOnClick() {
+        dispatch(incrementGlobalZ())
+        if (isPortfolioActive === true) {
+            dispatch(changePortfolioActive(false))
+            dispatch(changePortfolioClosed(true))
+        } else {
+            dispatch(changeAllActiveToFalse())
+            dispatch(setPortfolioZ())
+            dispatch(changePortfolioActive(true))
+            dispatch(changePortfolioClosed(false))
+        }
+    }
+
     function StartOnClick() {
         dispatch(incrementGlobalZ())
         if(isStartActive === true){
@@ -241,8 +260,11 @@ const Taskbar = () => {
                     <button onClick={()=> CommonCraveOnClick()} style={{order: CommonCraveOrder}} className={isCommonCraveOnTaskbar===false ? "hidden" : isCommonCraveActive ? `h-8 w-36 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-36 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
                         Common Crave
                     </button>
-                    <button onClick={()=> OverRatedOnClick()} style={{order: OverRatedOrder}} className={isOverRatedOnTaskbar===false ? "hidden" : isOverRatedActive ? `h-8 w-36 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-36 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
+                    <button onClick={()=> OverRatedOnClick()} style={{order: OverRatedOrder}} className={isOverRatedOnTaskbar===false ? "hidden" : isOverRatedActive ? `h-8 w-28 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-28 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
                         OverRated
+                    </button>
+                    <button onClick={()=> PortfolioOnClick()} style={{order: PortfolioOrder}} className={isPortfolioOnTaskbar===false ? "hidden" : isPortfolioActive ? `h-8 w-20 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-20 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
+                        Portfolio
                     </button>
                     {/* ------Fetch Stuff---------- */}
                     <button onClick={()=> FetchOnClick()} style={{order: FetchOrder}} className={isFetchOnTaskbar===false ? "hidden" : isFetchActive ? `h-8 w-24 border border-t-shadow border-l-shadow border-r-white border-b-white` : `h-8 w-24 border border-t-white border-l-white border-b-shadow border-r-shadow`}>
