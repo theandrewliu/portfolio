@@ -73,15 +73,21 @@ const CommonCraveWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <div>
-                                <h1 className="text-6xl font-bold pl-8 pt-5">Common Crave</h1>
+                            <div className="flex justify-between items-center p-2">
+                                <h1 className="text-6xl font-bold">Common Crave</h1>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow w-20 h-8"><a href="https://github.com/yeseniaramirez14/commoncrave" target="_blank" rel="noopener noreferrer">Source</a></button>
                             </div>
-                            <div className="flex flex-row pt-5 space-x-6">
-                                <div className="w-1/3 pl-4">
-                                    img
+                            <div className="flex flex-col">
+                                <div className="h-full flex justify-center">
+                                    <img alt="gif of common crave use"/>
                                 </div>
-                                <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
-                                    text
+                                <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
+                                    Common Crave is an attempt to help groups decide on what to eat. A group leader will create the group, send an invite to the party where each user selects
+                                    what type of food they're craving. If they have a particular restaurant in mind, there's an option to type in a restaurant name and the categories will be
+                                    selected. After everyone's decided, a restaurant that is the most craved and equidistant to all members will be selected.
+                                    <br></br>
+                                    <br></br>
+                                    Currently the website is a work in progress but I will update this description when it gets completed.                
                                 </div>
                             </div>
                         </div>
@@ -102,15 +108,21 @@ const CommonCraveWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <div>
-                                <h1 className="text-6xl font-bold pl-8 pt-5">Common Crave</h1>
+                            <div className="flex justify-between items-center p-2">
+                                <h1 className="text-6xl font-bold">Common Crave</h1>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow w-20 h-8"><a href="https://github.com/yeseniaramirez14/commoncrave" target="_blank" rel="noopener noreferrer">Source</a></button>
                             </div>
-                            <div className="flex flex-row pt-5 space-x-6">
-                                <div className="w-1/3 pl-4">
-                                    image
+                            <div className="flex flex-col">
+                                <div className="h-full flex justify-center">
+                                    <img alt="gif of common crave use"/>
                                 </div>
-                                <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
-                                    Will be added soon!                   
+                                <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
+                                    Common Crave is an attempt to help groups decide on what to eat. A group leader will create the group, send an invite to the party where each user selects
+                                    what type of food they're craving. If they have a particular restaurant in mind, there's an option to type in a restaurant name and the categories will be
+                                    selected. After everyone's decided, a restaurant that is the most craved and equidistant to all members will be selected.
+                                    <br></br>
+                                    <br></br>
+                                    Currently the website is a work in progress but I will update this description when it gets completed.                
                                 </div>
                             </div>
                         </div>

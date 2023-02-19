@@ -14,6 +14,7 @@ import hidebutton from '../../assets/icons/hide-icon.png'
 import maximizebutton from '../../assets/icons/maximize-icon.png'
 import minimizebutton from '../../assets/icons/minimize-icon.png'
 import foldersmall from '../../assets/icons/folder-small.png'
+import OverRatedScreenshot from '../../assets/images/Projects/home.gif'
 
 
 
@@ -73,15 +74,23 @@ const OverRatedWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <div>
-                                <h1 className="text-6xl font-bold pl-8 pt-5">OverRated</h1>
+                            <div className="flex justify-between items-center p-2">
+                                <h1 className="text-6xl font-bold">OverRated</h1>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow w-20 h-8"><a href="https://github.com/theandrewliu/OverRated" target="_blank" rel="noopener noreferrer">Source</a></button>
                             </div>
-                            <div className="flex flex-row pt-5 space-x-6">
-                                <div className="w-1/3 pl-4">
-                                    img
+                            <div className="flex flex-col">
+                                <div className="h-full flex justify-center">
+                                    <img src={OverRatedScreenshot} alt="gif of landing page of overrated"/>
                                 </div>
-                                <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
-                                    text
+                                <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
+                                During our time in the Hack Reactor program, my three colleagues and I created a final project called "OverRated." 
+                                The concept behind this website was to combine the features of OkCupid with Yelp's rating system. The result was a 
+                                platform where users could sign up and create an account, upload profile pictures (hosted on Amazon S3), find and connect 
+                                with other users, send messages, and view and rate matches. While my main focus was on the backend development, where we 
+                                utilized FastAPI to create our API endpoints, the entire project was built from scratch in just one month. We deployed the 
+                                site using Gitlab Pages and hosted the database on Heroku's free plan. However, in November 2022, Heroku discontinued their 
+                                free plan, which caused the site to malfunction. Perhaps there will be an opportunity to revisit and improve the project in 
+                                the future.                
                                 </div>
                             </div>
                         </div>
@@ -102,15 +111,23 @@ const OverRatedWindow = () => {
                             </div>
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                            <div>
-                                <h1 className="text-6xl font-bold pl-8 pt-5">OverRated</h1>
+                            <div className="flex justify-between items-center p-2">
+                                <h1 className="text-6xl font-bold">OverRated</h1>
+                                <button className="active:border-t-shadow active:border-l-shadow active:border-b-white active:border-r-white bg-taskbar border border-t-white border-l-white border-b-shadow border-r-shadow w-20 h-8"><a href="https://github.com/theandrewliu/OverRated" target="_blank" rel="noopener noreferrer">Source</a></button>
                             </div>
-                            <div className="flex flex-row pt-5 space-x-6">
-                                <div className="w-1/3 pl-4">
-                                    image
+                            <div className="flex flex-col">
+                                <div className="h-full flex justify-center">
+                                    <img src={OverRatedScreenshot} alt="gif of landing page of overrated"/>
                                 </div>
-                                <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
-                                    Will be added soon!                   
+                                <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
+                                During our time in the Hack Reactor program, my three colleagues and I created a final project called "OverRated." 
+                                The concept behind this website was to combine the features of OkCupid with Yelp's rating system. The result was a 
+                                platform where users could sign up and create an account, upload profile pictures (hosted on Amazon S3), find and connect 
+                                with other users, send messages, and view and rate matches. While my main focus was on the backend development, where we 
+                                utilized FastAPI to create our API endpoints, the entire project was built from scratch in just one month. We deployed the 
+                                site using Gitlab Pages and hosted the database on Heroku's free plan. However, in November 2022, Heroku discontinued their 
+                                free plan, which caused the site to malfunction. Perhaps there will be an opportunity to revisit and improve the project in 
+                                the future.                
                                 </div>
                             </div>
                         </div>
