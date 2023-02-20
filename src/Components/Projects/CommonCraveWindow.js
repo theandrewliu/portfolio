@@ -14,6 +14,7 @@ import hidebutton from '../../assets/icons/hide-icon.png'
 import maximizebutton from '../../assets/icons/maximize-icon.png'
 import minimizebutton from '../../assets/icons/minimize-icon.png'
 import foldersmall from '../../assets/icons/folder-small.png'
+import commoncraveimage from '../../assets/images/Projects/CommonCrave.gif'
 
 
 
@@ -79,7 +80,7 @@ const CommonCraveWindow = () => {
                             </div>
                             <div className="flex flex-col">
                                 <div className="h-full flex justify-center">
-                                    <img alt="gif of common crave use"/>
+                                    <img src={commoncraveimage} alt="gif of common crave use"/>
                                 </div>
                                 <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
                                     Common Crave is an attempt to help groups decide on what to eat. A group leader will create the group, send an invite to the party where each user selects
@@ -114,7 +115,7 @@ const CommonCraveWindow = () => {
                             </div>
                             <div className="flex flex-col">
                                 <div className="h-full flex justify-center">
-                                    <img alt="gif of common crave use"/>
+                                    <img src={commoncraveimage} alt="gif of common crave use"/>
                                 </div>
                                 <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
                                     Common Crave is an attempt to help groups decide on what to eat. A group leader will create the group, send an invite to the party where each user selects
