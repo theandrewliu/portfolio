@@ -83,10 +83,10 @@ const PortfolioWindow = () => {
                                     <img src={screenshot} alt="screenshot of my website"/>
                                 </div>
                                 <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
-                                    You're looking at it! This portfolio website was coded entirely in React with the use of Redux to manage the state of all the windows. I needed
+                                You're looking at it! This portfolio website was coded entirely in React with the use of Redux to manage the state of all the windows. I needed
                                     a way to track whether or not a window was closed, maximized, minimized, or was the current active window. I used multiple modules to allow for 
-                                    the windows not only draggable but also resizable. Inspiration for the theme of this website was from a TikTok from grovy.space, who I have linked 
-                                    in the Start menu along with some of my social medias.                
+                                    the windows not only be draggable but also be resizable. Inspiration for the theme of this website was from a TikTok from grovy.space, who I have linked 
+                                    in the Start menu.                
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@ const PortfolioWindow = () => {
                                 <div className="text-xl space-y-3 pr-4 items-center h-full p-10">
                                     You're looking at it! This portfolio website was coded entirely in React with the use of Redux to manage the state of all the windows. I needed
                                     a way to track whether or not a window was closed, maximized, minimized, or was the current active window. I used multiple modules to allow for 
-                                    the windows not only draggable but also resizable. Inspiration for the them of this website was from a TikTok from grovy.space, who I have linked 
+                                    the windows not only be draggable but also be resizable. Inspiration for the theme of this website was from a TikTok from grovy.space, who I have linked 
                                     in the Start menu.                
                                 </div>
                             </div>
