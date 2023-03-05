@@ -40,7 +40,7 @@ const OniIcon = () => {
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex z-[5]">
+        <div className="pb-3 justify-center flex z-[5]" onTouchStart={(event)=>{event.stopPropagation();OniOnClick()}}>
             <button id="icon" type="button" title="Oni">
                 <img draggable={false} className="pl-2" alt="oni" src={camera}/>
                 <div className="text-white">Oni</div> 

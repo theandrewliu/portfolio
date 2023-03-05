@@ -40,7 +40,7 @@ const SkillsIcon = () => {
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex z-[5]">
+        <div className="pb-3 justify-center flex z-[5]" onTouchStart={(event)=>{event.stopPropagation();SkillsOnClick()}}>
             <button id="icon" type="button" title="Skills">
                 <img draggable={false} className="pl-2" alt="skills" src={helpbook}/>
                 <div className="text-white">Skills</div> 

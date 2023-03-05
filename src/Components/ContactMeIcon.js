@@ -40,7 +40,7 @@ const ContactMeIcon = () => {
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex z-[5]">
+        <div className="pb-3 justify-center flex z-[5]" onTouchStart={(event)=>{event.stopPropagation();ContactMeOnClick()}}>
             <button id="icon" type="button" title="Contact Me">
                 <img draggable={false} className="pl-3" alt="contact me" src={modem}/>
                 <div className="text-white">Contact Me</div> 

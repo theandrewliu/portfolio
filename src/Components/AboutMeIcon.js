@@ -40,7 +40,7 @@ const AboutMeIcon = () => {
 
     return (
     <Draggable handle="#icon" onStart={onStart} onStop={onStop} scale={0.75}>
-        <div className="pb-3 justify-center flex z-[5]">
+        <div className="pb-3 justify-center flex z-[5]" onTouchStart={(event)=>{event.stopPropagation();aboutMeOnClick()}}>
             <button id="icon" type="button" title="About Me">
                 <img draggable={false} className="pl-2" alt="about me" src={msagent}/>
                 <div className="text-white">About Me</div> 
