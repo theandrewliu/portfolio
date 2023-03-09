@@ -88,7 +88,13 @@ const CommonCraveWindow = () => {
                                     selected. After everyone's decided, a restaurant that is the most craved and equidistant to all members will be selected.
                                     <br></br>
                                     <br></br>
-                                    Currently the website is a work in progress but I will update this description when it gets completed.                
+                                    This project can be accessed at: https://commoncrave.com 
+                                    <br></br>
+                                    <br></br>
+                                    This MERN web app was developed by me and my project partner in the span of about two months. Prior to this project, I had limited experience
+                                    in Node.js, MongoDB, or TailwindCSS. But by working on this project, I've grown accustomed to them. This project was deployed on an AWS EC2 instance
+                                    running Ubuntu using NginX for web serving and reverse-proxy. Overall I'm proud of how this project turned out and I hope people try it out to help them and
+                                    their friends decide on their next place to eat!          
                                 </div>
                             </div>
                         </div>
@@ -124,7 +130,13 @@ const CommonCraveWindow = () => {
                                     The website utilizes a MERN stack with TailwindCSS for styling. 
                                     <br></br>
                                     <br></br>
-                                    Currently the website is a work in progress but I will update this description when it gets completed.                
+                                    This project can be accessed at: https://commoncrave.com 
+                                    <br></br>
+                                    <br></br>
+                                    This MERN web app was developed by me and my project partner in the span of about two months. Prior to this project, I had limited experience
+                                    in Node.js, MongoDB, or TailwindCSS. But by working on this project, I've grown accustomed to them. This project was deployed on an AWS EC2 instance
+                                    running Ubuntu using NginX for web serving and reverse-proxy. Overall I'm proud of how this project turned out and I hope people try it out to help them and
+                                    their friends decide on their next place to eat!                     
                                 </div>
                             </div>
                         </div>
