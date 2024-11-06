@@ -88,7 +88,17 @@ const ProjectsWindow = () => {
                         </div>
                     </div>
                     <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
-                        WIP
+                        <div className={gridClass}>
+                            <div className={gridItemClass}>
+                                <CommonCraveIcon />
+                            </div>
+                            <div className={gridItemClass}>
+                                <OverRatedIcon />
+                            </div>
+                            <div className={gridItemClass}>
+                                <PortfolioIcon />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

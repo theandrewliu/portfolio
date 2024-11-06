@@ -67,7 +67,7 @@ const OniWindow = () => {
                     </div>
                     <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
                         <div className="flex justify-center items-center">
-                            <h1 className="text-6xl font-bold pt-5">The best dog in my world: Oni</h1>
+                            <h1 className="text-6xl font-bold pt-5">The best dog in my world: Oni 2017-2024</h1>
                         </div>
                         <div className="grid grid-cols-2 place-items-center pt-10 gap-y-10 space-x-5 space-y-4">
                             <div>
@@ -102,7 +102,7 @@ const OniWindow = () => {
                         </div>
                         <div className="p-2 h-full bg-white border border-l-shadow border-t-shadow whitespace-normal break-normal overflow-auto">
                             <div className="flex justify-center items-center">
-                                <h1 className="text-6xl font-bold pt-5">The best dog in my world: Oni</h1>
+                                <h1 className="text-6xl font-bold pt-5">The best dog in my world: Oni 2017-2024</h1>
                             </div>
                             <div className="grid grid-cols-2 place-items-center pt-10 gap-y-10 space-x-5 space-y-4">
                                 <div>

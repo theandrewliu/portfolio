@@ -37,6 +37,12 @@ import {
     SiDocker,
     SiGit,
     SiCss3,
+    SiJava,
+    SiAngular,
+    SiTypescript,
+    SiCsharp,
+    SiDotnet,
+    SiJenkins,
 } from "react-icons/si"
 
 
@@ -117,6 +123,18 @@ const SkillsWindow = () => {
                                 <div>JavaScript</div>
                             </div>
                             <div className={gridItemClass}>
+                                <SiJava size={70} />
+                                <div>Java</div>
+                            </div>
+                            <div className={gridItemClass}>
+                                <SiTypescript size={70} />
+                                <div>TypeScript</div>
+                            </div>
+                            <div className={gridItemClass}>
+                                <SiCsharp size={70} />
+                                <div>C#</div>
+                            </div>
+                            <div className={gridItemClass}>
                                 <SiHtml5 size={70} />
                                 <div>HTML</div>
                             </div>
@@ -137,6 +155,10 @@ const SkillsWindow = () => {
                                 <div>React</div>
                             </div>
                             <div className={gridItemClass}>
+                                <SiAngular size={70} />
+                                <div>Angular</div>
+                            </div>
+                            <div className={gridItemClass}>
                                 <SiRedux size={70} />
                                 <div>Redux</div>
                             </div>
@@ -147,6 +169,10 @@ const SkillsWindow = () => {
                             <div className={gridItemClass}>
                                 <SiDjango size={70} />
                                 <div>Django</div>
+                            </div>
+                            <div className={gridItemClass}>
+                                <SiDotnet size={70} />
+                                <div>.NET</div>
                             </div>
                             <div className={gridItemClass}>
                                 <SiFastapi size={70} />
@@ -180,6 +206,10 @@ const SkillsWindow = () => {
                                 <SiAmazons3 size={70} />
                                 <div>AmazonS3</div>
                             </div>
+                            <div className={gridItemClass}>
+                                <SiJenkins size={70} />
+                                <div>Jenkins</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,6 +239,18 @@ const SkillsWindow = () => {
                                     <div>JavaScript</div>
                                 </div>
                                 <div className={gridItemClass}>
+                                    <SiJava size={70} />
+                                    <div>Java</div>
+                                </div>
+                                <div className={gridItemClass}>
+                                    <SiTypescript size={70} />
+                                    <div>TypeScript</div>
+                                </div>
+                                <div className={gridItemClass}>
+                                    <SiCsharp size={70} />
+                                    <div>C#</div>
+                                </div>
+                                <div className={gridItemClass}>
                                     <SiHtml5 size={70} />
                                     <div>HTML</div>
                                 </div>
@@ -229,6 +271,10 @@ const SkillsWindow = () => {
                                     <div>React</div>
                                 </div>
                                 <div className={gridItemClass}>
+                                    <SiAngular size={70} />
+                                    <div>Angular</div>
+                                </div>
+                                <div className={gridItemClass}>
                                     <SiRedux size={70} />
                                     <div>Redux</div>
                                 </div>
@@ -239,6 +285,10 @@ const SkillsWindow = () => {
                                 <div className={gridItemClass}>
                                     <SiDjango size={70} />
                                     <div>Django</div>
+                                </div>
+                                <div className={gridItemClass}>
+                                    <SiDotnet size={70} />
+                                    <div>.NET</div>
                                 </div>
                                 <div className={gridItemClass}>
                                     <SiFastapi size={70} />
@@ -271,6 +321,10 @@ const SkillsWindow = () => {
                                 <div className={gridItemClass}>
                                     <SiAmazons3 size={70} />
                                     <div>AmazonS3</div>
+                                </div>
+                                <div className={gridItemClass}>
+                                    <SiJenkins size={70} />
+                                    <div>Jenkins</div>
                                 </div>
                             </div>
                         </div>

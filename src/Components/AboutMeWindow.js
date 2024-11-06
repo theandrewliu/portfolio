@@ -7,7 +7,7 @@ import hidebutton from '../assets/icons/hide-icon.png'
 import maximizebutton from '../assets/icons/maximize-icon.png'
 import minimizebutton from '../assets/icons/minimize-icon.png'
 import msagentsmall from '../assets/icons/msagentsmall.png'
-import selfie from '../assets/images/AboutMe.jpg'
+import selfie from '../assets/images/AboutMe.jpeg'
 
 
 const AboutMeWindow = () => {
@@ -75,17 +75,16 @@ const AboutMeWindow = () => {
                                 </div>
                                 <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
                                     <p className="indent-8">
-                                        What's up! I'm Andrew! People like to call me "That super experienced software engineering guy who is also really cool." 
+                                        Hey there! Welcome to my Portfolio! This website is best viewed on a web browser!
                                     </p>    
                                     <p className="indent-8">
-                                        Okay no one does, but I'll get there one day I swear.
-                                        I am a graduate of Hack Reactor's 19 week software engineering coding boot camp where I learned full stack web development. Prior to that I was working as a CAD Designer at 
-                                        an orthodontic startup! I hold degrees in Chemical and Mechanical Engineering which is fancy talk for I like solving problems. When I'm not 
-                                        working, you can catch me playing video games, watching shows, spending time with my dog Oni, or trying to come up with a better About Me page.
+                                        I'm Andrew and I completed Hack Reactor's 19 week coding bootcamp in 2022! After some blood, sweat, and many, many tears, I was able to put my foot in the door of Software Engineering!
+                                        Prior to that, I was working as a CAD Designer at an orthodontic startup. I hold degrees in Chemical and Mechanical Engineering but they're just something to casually talk about in interviews...
+                                        When I'm not working, I'm playing video games, trying out new recipes, or watching some shows!
                                     </p>
                                     <p className="indent-8">
-                                        Feel free to take a look around this website that I spent too many nights burning the midnight oil for. And don't hesitate to reach out to me with employment
-                                        opportunities! If my LinkedIn still says "Open To Work," I am still looking for a job. If you want to reach out to just chat, that's okay too. 
+                                        I made this portfolio website to give me an edge and to learn more web development technologies but sadly I've neglected it. A lot has changed and I'll try my best to refresh this as life
+                                        events change! But for now, thank you again for stopping by and have fun exploring the very limited things here.
                                     </p>
                                 </div>
                             </div>
@@ -116,17 +115,16 @@ const AboutMeWindow = () => {
                                 </div>
                                 <div className="w-2/3 text-xl space-y-3 pr-4 flex flex-col items-center h-full">
                                     <p className="indent-8">
-                                        What's up! I'm Andrew! People like to call me "That super experienced software engineering guy who is also really cool." 
+                                        Hey there! Welcome to my Portfolio! This website is best viewed on a web browser!
                                     </p>    
                                     <p className="indent-8">
-                                        Okay no one does, but I'll get there one day I swear.
-                                        I am a graduate of Hack Reactor's 19 week software engineering coding boot camp where I learned full stack web development. Prior to that I was working as a CAD Designer at 
-                                        an orthodontic startup! I hold degrees in Chemical and Mechanical Engineering which is fancy talk for I like solving problems. When I'm not 
-                                        working, you can catch me playing video games, watching shows, spending time with my dog Oni, or trying to come up with a better About Me page.
+                                        I'm Andrew and I completed Hack Reactor's 19 week coding bootcamp in 2022! After some blood, sweat, and many, many tears, I was able to put my foot in the door of Software Engineering!
+                                        Prior to that, I was working as a CAD Designer at an orthodontic startup. I hold degrees in Chemical and Mechanical Engineering but they're just something to casually talk about in interviews...
+                                        When I'm not working, I'm playing video games, trying out new recipes, or watching some shows!
                                     </p>
                                     <p className="indent-8">
-                                        Feel free to take a look around this website that I spent too many nights burning the midnight oil for. And don't hesitate to reach out to me with employment
-                                        opportunities! If my LinkedIn still says "Open To Work," I am still looking for a job. If you want to reach out to just chat, that's okay too. 
+                                        I made this portfolio website to give me an edge and to learn more web development technologies but sadly I've neglected it. A lot has changed and I'll try my best to refresh this as life
+                                        events change! But for now, thank you again for stopping by and have fun exploring the very limited things here.
                                     </p>
                                 </div>
                             </div>
